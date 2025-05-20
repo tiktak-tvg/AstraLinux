@@ -58,17 +58,6 @@ route
 ```bash
 nmcli dev sh
 ```
-Для начала сделаем статический адрес на будущем контроллере домена.
-
->[!Warning]
->На рабочих станциях этого делать не обязательно, да и не нужно.
-
-```bash
-sudo systemctl status NetworkManager //проверяем статус службы NetworkManager
-sudo systemctl stop NetworkManager //останавливает службу
-sudo systemctl disable NetworkManager //удаляет её из автозагрузки
-sudo systemctl mask NetworkManager //останавливает активность службы
-```
 Отключаем ipv6 на всех интерфейсах кроме lo.(не обязательно!) 
 >[!Warning]
 >Отключение IPv6 настройкой параметров ядра сделано в ОС Astra Linux по умолчанию (см. выше файл /etc/sysctl.d/999-astra.conf), однако при наличии загруженного модуля ядра IPv6 служба NetworkManager по умолчанию сама назначает сетевым интерфейсам адреса IPv6. 
