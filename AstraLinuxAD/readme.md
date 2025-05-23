@@ -102,6 +102,10 @@ apt update && sudo apt list --upgradable && sudo apt dist-upgrade -y -o Dpkg::Op
 
 Лучше
 sudo astra-update -A -r -T
+лог сохраняется /var/log/astra-update*
+
+![image](https://github.com/user-attachments/assets/081d05dc-5a0c-4814-80ae-07a2f7adb59c)
+
 одно и тоже что
 sudo dist-upgrade
 
