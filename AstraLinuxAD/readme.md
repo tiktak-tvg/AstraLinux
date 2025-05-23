@@ -99,5 +99,13 @@ apt policy apt-transport-https ca-certificates
 Далее обновляем
 ```bash
 apt update && sudo apt list --upgradable && sudo apt dist-upgrade -y -o Dpkg::Options::=--force-confnew
+
+Лучше
+sudo astra-update -A -r -T
+одно и тоже что
+sudo dist-upgrade
+
+apt install astra-update
+apt install astra-upgrade
 ```
 Далее, настройка.
