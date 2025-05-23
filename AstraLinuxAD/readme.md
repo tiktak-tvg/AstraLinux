@@ -101,15 +101,15 @@ apt policy apt-transport-https ca-certificates
 apt update && sudo apt list --upgradable && sudo apt dist-upgrade -y -o Dpkg::Options::=--force-confnew
 
 Лучше
+apt install astra-update
+apt install astra-upgrade
 sudo astra-update -A -r -T
 лог сохраняется /var/log/astra-update*
-
+```
 ![image](https://github.com/user-attachments/assets/081d05dc-5a0c-4814-80ae-07a2f7adb59c)
 
 одно и тоже что
+```bash
 sudo dist-upgrade
-
-apt install astra-update
-apt install astra-upgrade
 ```
 Далее, настройка.
