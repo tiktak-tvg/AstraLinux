@@ -31,3 +31,23 @@ apt install fly-astra-update // обновление через графичес
 После обновления проверим версию ``cat /etc/astra/build_version``
 
 ![image](https://github.com/user-attachments/assets/408fd6bd-2f84-46fa-81da-038e968ff2e4)
+
+Идём дальше
+
+Скачиваем архив CDinstall_2.0.2024.14752_Astra_1.7.4_offline.zip
+закидываем в корень папки ``/mnt`` переходим в неё и распаковываем
+```bash
+cd /mnt/
+unzip CDinstall_2.0.2024.14752_Astra_1.7.4_offline.zip
+```
+После распаковки заходим в папку
+```bash
+cd /mnt/CDDiskPack/CDinstall_Astra_1.7.4/sslcert
+```
+Создаём сертификаты
+```bash
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout it.company.lan.key -out it.company.lan.crt
+```
+- it.company.lan.* меняем на свои доменные имена
+
+![image](https://github.com/user-attachments/assets/dc9d72ad-64bc-4e56-a62b-e4b8e31a775b)
