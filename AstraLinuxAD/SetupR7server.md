@@ -50,7 +50,7 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout it.company.lan.key -
 ```
 - it.company.lan.* меняем на свои доменные имена
 
-![image](https://github.com/user-attachments/assets/bbdad44f-ca26-4789-b023-6d90b85ad8f7)
+![image](https://github.com/user-attachments/assets/3e87eb36-1a2b-4553-9329-f24a3bdf7337)
   
 ![image](https://github.com/user-attachments/assets/dc9d72ad-64bc-4e56-a62b-e4b8e31a775b)
 
