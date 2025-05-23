@@ -100,9 +100,10 @@ apt policy apt-transport-https ca-certificates
 ```bash
 apt update && sudo apt list --upgradable && sudo apt dist-upgrade -y -o Dpkg::Options::=--force-confnew
 
-Лучше
+Оперативное обновление, например 1.7.3 до 1.7.7
 apt install astra-update
 apt install astra-upgrade
+для любителей графики fly-astra-update
 sudo astra-update -A -r -T
 лог сохраняется /var/log/astra-update*
 ```
