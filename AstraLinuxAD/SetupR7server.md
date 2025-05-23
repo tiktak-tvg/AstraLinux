@@ -51,3 +51,12 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout it.company.lan.key -
 - it.company.lan.* меняем на свои доменные имена
 
 ![image](https://github.com/user-attachments/assets/dc9d72ad-64bc-4e56-a62b-e4b8e31a775b)
+
+Далее переходим к скрипту запуска
+```bash
+chmod +x offline_installer.sh
+запускаем
+./offline_installer.sh
+```
+![image](https://github.com/user-attachments/assets/caa684ee-d0b8-4618-bad7-ab36eda8d02b)
+
