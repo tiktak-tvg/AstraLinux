@@ -89,10 +89,11 @@ chmod +x offline_installer.sh
 
 
 
+![image](https://github.com/user-attachments/assets/b8b03d01-4e58-46ef-ac1d-cb19e0719d60)
 
 ![image](https://github.com/user-attachments/assets/10eff70d-b8db-421e-ad40-69772b77fa5d)
 
-![image](https://github.com/user-attachments/assets/b8b03d01-4e58-46ef-ac1d-cb19e0719d60)
+
 
 ![image](https://github.com/user-attachments/assets/2f2e3341-85de-458d-8aac-40ca5e562733)
 
