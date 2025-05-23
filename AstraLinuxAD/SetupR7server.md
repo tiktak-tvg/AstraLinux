@@ -7,13 +7,13 @@
 Устанавливаем ОС Астра 1.7.4 образ 1.7.4-24.04.2023_14.23.iso
 
 После установки выполняем команды:
-```bash
-apt install open-vm-tools
-```
+
 Открываем репозитории `` nano /etc/apt/sources.list``
 
 ![image](https://github.com/user-attachments/assets/a9342a3c-bdbd-44fb-8f90-19b6b16f4065)
-
+```bash
+apt install open-vm-tools
+```
 ```bash
 apt update
 apt install astra-update
