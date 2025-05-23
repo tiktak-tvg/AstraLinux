@@ -72,6 +72,25 @@ chmod +x offline_installer.sh
 
 ![image](https://github.com/user-attachments/assets/2237c1d7-2c86-4491-ae5f-bea349f658cd)
 
+![image](https://github.com/user-attachments/assets/7cce156d-c595-45fe-b81f-47d202d8555b)
+
+![image](https://github.com/user-attachments/assets/0135cee8-32f3-446d-91df-b1ca94db8e9a)
+
+![image](https://github.com/user-attachments/assets/3f5778a3-0834-4aa3-a11d-a182a9bb3aa8)
+
+![image](https://github.com/user-attachments/assets/83f23eaf-2540-4dca-a145-1d2c7066b182)
+
+![image](https://github.com/user-attachments/assets/84e27862-4db4-4d62-a272-eaa53aa900d3)
+
+![image](https://github.com/user-attachments/assets/b8b03d01-4e58-46ef-ac1d-cb19e0719d60)
+
+![image](https://github.com/user-attachments/assets/10eff70d-b8db-421e-ad40-69772b77fa5d)
+
+![image](https://github.com/user-attachments/assets/5afb9ace-7c43-48b1-83ce-22cd7e17e2ed)
+
+![image](https://github.com/user-attachments/assets/2f2e3341-85de-458d-8aac-40ca5e562733)
+
+
 Если всё сделали правильно в конце отработки скрипта получаем это
 
 ![image](https://github.com/user-attachments/assets/b838aff3-72b6-4ae4-ae91-b6326baa00f7)
