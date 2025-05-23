@@ -60,3 +60,11 @@ chmod +x offline_installer.sh
 ```
 ![image](https://github.com/user-attachments/assets/caa684ee-d0b8-4618-bad7-ab36eda8d02b)
 
+Если всё сделали правильно в конце отработки скрипта получаем это
+
+![image](https://github.com/user-attachments/assets/7fa05785-fa54-4e92-b507-a63d709708bc)
+
+Заходим
+
+![image](https://github.com/user-attachments/assets/896a0b8a-2ba6-43a3-844c-69371444be2f)
+
