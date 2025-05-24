@@ -139,7 +139,21 @@ smtpd_tls_key_file = /etc/nginx/ssl/it.company.lan.key
 ![image](https://github.com/user-attachments/assets/f4025aea-f015-4df2-8d7e-9cfaf3ddc3ad)
 
 #### Установка почтового сервера R7.
+Если выбрали, то установка запустится автоматически.
 
+![40](https://github.com/user-attachments/assets/3b0169ce-0a52-4fcd-bd48-c21225b4dc85)
+
+Если нет, то надо запустить в ручную скрипт ``install_mailserver.sh``
+
+![41](https://github.com/user-attachments/assets/30ce2450-33aa-4bfb-8a33-811aa251a2fa)
+
+![42](https://github.com/user-attachments/assets/610075b4-b851-4dd6-b499-b17a9af3de32)
+
+![43](https://github.com/user-attachments/assets/396395fb-010e-4b6d-8c33-a9d1c7243f25)
+
+![44](https://github.com/user-attachments/assets/e0cb49e9-6577-422a-b485-954d502aea6e)
+
+![45](https://github.com/user-attachments/assets/6c0ebd51-4130-436e-92f9-d9af2ddc4be9)
 
 
 
