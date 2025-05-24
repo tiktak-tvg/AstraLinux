@@ -54,6 +54,11 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout it.company.lan.key -
   
 ![image](https://github.com/user-attachments/assets/dc9d72ad-64bc-4e56-a62b-e4b8e31a775b)
 
+Другой способ сгенерировать закрытый ключ и самоподписанный сертификат для localhost - выполнить следующую команду из пакета openssl:
+```bash
+openssl req -x509 -out localhost.crt -keyout localhost.key -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' -extensions EXT -config <(printf "[dn]\nCN=localhost\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:localhost\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
+Вы можете сконфигурировать локальный web-сервер, используя файлы localhost.crt и localhost.key, добавив localhost.crt в список доверенных корневых сертификатов.
+```
 Далее переходим к скрипту запуска
 ```bash
 chmod +x offline_installer.sh
