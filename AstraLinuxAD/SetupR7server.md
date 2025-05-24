@@ -92,6 +92,14 @@ chmod +x offline_installer.sh
 
 ![image](https://github.com/user-attachments/assets/fc587c14-bb22-4463-8bdd-08fa4baa9c5f)
 
+>[!Warning]
+>Если Вы выбрали установки без HTTPS, то, после инсталляции, почтовый сервер работать не будет.
+
+Для его работы необходимо положить сертификаты по пути:
+```bash
+smtpd_tls_cert_file = /etc/nginx/ssl/it.company.lan.crt
+smtpd_tls_key_file = /etc/nginx/ssl/it.company.lan.key
+```
 ![image](https://github.com/user-attachments/assets/ae23bfe7-4777-4147-ae3a-4776c64e94a2)
 
 ![image](https://github.com/user-attachments/assets/6aba3925-df9e-4c4b-ba06-c5dd15954b0d)
