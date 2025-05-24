@@ -164,8 +164,8 @@ MX-запись указывает на доменное имя почтовог
 
 Проверить MX-записи можно через команды в терминале:
 ```bash
-nslookup -type=mx example.com (Windows)
-dig mx example.com (Linux/macOS).
+nslookup -type=mx it.company.lan (Windows)
+dig mx it.company.lan (Linux/macOS).
 ```
 Запись ``v=spf1 +mx ~all`` в DNS — это SPF-запись, которая помогает защитить домен от подделки электронной почты (спуфинга). <br>Она указывает, какие серверы имеют право отправлять письма от имени вашего домена.<br>
 SPF-запись v=spf1 +mx ~all разрешит отправку писем только с astra7.it.company.lan, а письма с других серверов будут отклонены или помечены.
