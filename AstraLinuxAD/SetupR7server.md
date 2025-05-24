@@ -138,7 +138,7 @@ smtpd_tls_key_file = /etc/nginx/ssl/it.company.lan.key
 
 ![image](https://github.com/user-attachments/assets/f4025aea-f015-4df2-8d7e-9cfaf3ddc3ad)
 
-
+#### Установка почтового сервера R7.
 
 
 
