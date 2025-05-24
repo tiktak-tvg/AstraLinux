@@ -139,6 +139,23 @@ smtpd_tls_key_file = /etc/nginx/ssl/it.company.lan.key
 ![image](https://github.com/user-attachments/assets/f4025aea-f015-4df2-8d7e-9cfaf3ddc3ad)
 
 #### Установка почтового сервера R7.
+
+>[!Warning]
+>Рекомендуем, перед продолжением инсталляции, прописать записи в DNS, для работы почтового сервера.
+Необходимо добавить запись А (ваш почтовый сервер hostname -f) и обратную запись, а также запись MX и TXT v=spf1 +mx ~all
+Пример:
+|        |it.company.lan       |TTL          |Приоритет
+|--------|------------------------|-------------|-----------|
+|MX			 |mx.it.company.lan       |300          |10
+
+|TXT     |it.company.lan         |TTL            |
+
+			      v=spf1+mx~all        300           |
+
+|A       |mx.it.company.lan      |TTL            |
+
+			      33.195.16.110        300            |
+   
 Если выбрали, то установка запустится автоматически.
 
 ![40](https://github.com/user-attachments/assets/3b0169ce-0a52-4fcd-bd48-c21225b4dc85)
