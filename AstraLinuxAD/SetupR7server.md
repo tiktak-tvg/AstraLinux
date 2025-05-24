@@ -143,7 +143,7 @@ smtpd_tls_key_file = /etc/nginx/ssl/it.company.lan.key
 
 ![40](https://github.com/user-attachments/assets/3b0169ce-0a52-4fcd-bd48-c21225b4dc85)
 
-Если нет, то надо запустить в ручную скрипт ``install_mailserver.sh``
+Если нет, то надо добавить сертификаты п. выше и запустить в ручную скрипт ``install_mailserver.sh``
 
 ![41](https://github.com/user-attachments/assets/30ce2450-33aa-4bfb-8a33-811aa251a2fa)
 
