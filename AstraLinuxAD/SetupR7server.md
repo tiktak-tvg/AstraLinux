@@ -153,7 +153,7 @@ smtpd_tls_key_file = /etc/nginx/ssl/it.company.lan.key
 |TXT     |it.company.lan         |TTL            |		|
 |	 |v=spf1+mx~all          |300            |		|
 |A       |astra7.it.company.lan  |TTL            |		|
-|	 |33.195.16.110          |300            |		|
+|	 |192.168.18.141          |300            |		|
    
 Если выбрали, то установка запустится автоматически.
 
