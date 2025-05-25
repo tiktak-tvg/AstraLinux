@@ -44,20 +44,35 @@ unzip CDinstall_2.0.2024.14752_Astra_1.7.4_offline.zip
 ```bash
 cd /mnt/CDDiskPack/CDinstall_Astra_1.7.4/sslcert
 ```
-Создаём сертификаты
-```bash
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout it.company.lan.key -out it.company.lan.crt
-```
-- it.company.lan.* меняем на свои доменные имена
+#### Генерация самоподписанных сертификатов
+Генерация самоподписанных SSL-сертификатов включает в себя три простых шага:
 
-![image](https://github.com/user-attachments/assets/3e87eb36-1a2b-4553-9329-f24a3bdf7337)
-  
+- Шаг 1: Создайте закрытый ключ сервера
+```bash
+openssl genrsa -out itcompany.key 2048
+```
+- Шаг 2: Создайте запрос подписи сертификата (CSR)
+```bash
+openssl req -new -key itcompany.key -out itcompany.csr
+```
+- Шаг 3: Подпишите сертификат с помощью закрытого ключа и CSR
+```bash
+openssl x509 -req -days 365 -in itcompany.csr -signkey itcompany.key -out itcompany.crt
+```
+Вы только что сгенерировали SSL-сертификат со сроком действия 365 дней.
+
 ![image](https://github.com/user-attachments/assets/dc9d72ad-64bc-4e56-a62b-e4b8e31a775b)
 
-Другой способ сгенерировать закрытый ключ и самоподписанный сертификат для localhost - выполнить следующую команду из пакета openssl:
+##### Усиление безопасности сервера
+Инструкциия по усилению безопасности вашего сервера.
+
+Для этого необходимо сгенерировать параметры Диффи-Хеллмана (DHE), обеспечивающие более высокую стойкость.
 ```bash
-openssl req -x509 -out localhost.crt -keyout localhost.key -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' -extensions EXT -config <(printf "[dn]\nCN=localhost\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:localhost\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
-Вы можете сконфигурировать локальный web-сервер, используя файлы localhost.crt и localhost.key, добавив localhost.crt в список доверенных корневых сертификатов.
+openssl dhparam -out dhparam.pem 2048
+```
+Проверяем
+```bash
+openssl req -in itcompany.csr -noout -text
 ```
 Далее переходим к скрипту запуска
 ```bash
