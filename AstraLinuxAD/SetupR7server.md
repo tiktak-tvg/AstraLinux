@@ -51,7 +51,7 @@ cd /mnt/CDDiskPack/CDinstall_Astra_1.7.4/sslcert
 ```bash
 openssl genrsa -out itcompany.key 2048
 ```
-![image](https://github.com/user-attachments/assets/da9d9a09-d9ae-4810-af53-2182adf958f9)
+![image](https://github.com/user-attachments/assets/89515eed-2a64-4bce-b2ca-12f461e262ad)
 
 - Шаг 2: Создайте запрос подписи сертификата (CSR)
 ```bash
