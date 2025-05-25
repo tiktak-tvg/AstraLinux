@@ -51,17 +51,22 @@ cd /mnt/CDDiskPack/CDinstall_Astra_1.7.4/sslcert
 ```bash
 openssl genrsa -out itcompany.key 2048
 ```
+![image](https://github.com/user-attachments/assets/da9d9a09-d9ae-4810-af53-2182adf958f9)
+
 - Шаг 2: Создайте запрос подписи сертификата (CSR)
 ```bash
 openssl req -new -key itcompany.key -out itcompany.csr
 ```
+![image](https://github.com/user-attachments/assets/cf6ec119-1d8c-4321-bc1c-cffe7a185177)
+
 - Шаг 3: Подпишите сертификат с помощью закрытого ключа и CSR
 ```bash
 openssl x509 -req -days 365 -in itcompany.csr -signkey itcompany.key -out itcompany.crt
 ```
+![image](https://github.com/user-attachments/assets/fc9f18d3-24b7-4ed1-be15-2a9f75cd99a2)
+
 Вы только что сгенерировали SSL-сертификат со сроком действия 365 дней.
 
-![image](https://github.com/user-attachments/assets/dc9d72ad-64bc-4e56-a62b-e4b8e31a775b)
 
 ##### Усиление безопасности сервера
 Инструкциия по усилению безопасности вашего сервера.
@@ -70,10 +75,14 @@ openssl x509 -req -days 365 -in itcompany.csr -signkey itcompany.key -out itcomp
 ```bash
 openssl dhparam -out dhparam.pem 2048
 ```
+![image](https://github.com/user-attachments/assets/25c29913-9e2a-454a-b6be-e4d42922a724)
+
 Проверяем
 ```bash
 openssl req -in itcompany.csr -noout -text
 ```
+![image](https://github.com/user-attachments/assets/4813c5fb-bc7b-4e86-bb5c-b1d82cb07503)
+
 Далее переходим к скрипту запуска
 ```bash
 chmod +x offline_installer.sh
