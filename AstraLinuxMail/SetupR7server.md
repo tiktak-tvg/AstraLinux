@@ -26,7 +26,7 @@ apt install fly-astra-update // обновление через графичес
 
 Команда ``fly-astra-update``  запустит графический интерфейс
 
-Команда ``apt update -A -r -T`` аналогична с командой ``dist-upgrade``
+Команда ``astra-update -A -r -T`` аналогична с командой ``dist-upgrade``
 
 После обновления проверим версию ``cat /etc/astra/build_version``
 
