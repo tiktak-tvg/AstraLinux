@@ -82,7 +82,7 @@ auto eth0
 allow-hotplug eth0
 iface eth0 inet static
 address x.x.x.x
-netmask 255.255.255.0
+netmask 255.255.255.x
 gateway x.x.x.x
 ```
 Чтобы применить новые настройки, достаточно перезапустить службу ``networking`` командой ``systemctl restart networking``. Может потребоваться также очистить старое соединение командой ``ip addr flush dev <имя устройства>``:
@@ -95,13 +95,26 @@ ping 77.88.8.8 -c 4
 Теперь в файл hosts добавим строки с именем сервера ``nano /etc/hosts``.
 ```bash
 127.0.0.1        localhost.localdomain localhost
-# 127.0.1.1      dc01.it.company.lan dc01   --обязательно закомментировать
-x.x.x.x          dc01.it.company.lan dc01
+# 127.0.1.1      astra7.it.company.lan astra7   --обязательно закомментировать
+x.x.x.x          astra7.it.company.lan astra7
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     localhost ip6-localhost ip6-loopback
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
+```
+Настраиваем ``FQDN`` имя первого контроллера домена:
+```bash
+hostnamectl set-hostname astra7.it.company.lan
+```
+Перезапустим сетевой интерфейс для применения настроек
+```bash 
+systemctl restart networking.service
+```
+Проверяем
+```bash
+hostname -s
+hostname -f // если не работает проверяем запись в файле etc/hosts
 ```
 Далее 
 
