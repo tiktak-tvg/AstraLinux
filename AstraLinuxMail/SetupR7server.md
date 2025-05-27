@@ -1,8 +1,13 @@
 #### Установка Корпоративного сервера 2024 offline-версии для ОС Astra.
 
-Установка произваодится на VM Ware Workstation, версия ОС Астра 1.7.4 обновлена до 1.7.7.9
+Установка произваодится на VM Ware Workstation, версия ОС Астра 1.7.4 будет обновлена до 1.7.7.9
 
-Предварительная подготовка.
+Установка состоит из двух этапов:
+
+1. Предварительная подготовка.
+2. Установка Корпоративного сервера 2024 offline-версии.
+
+#### Предварительная подготовка.   
 
 Устанавливаем ОС Астра 1.7.4 образ 1.7.4-24.04.2023_14.23.iso
 
@@ -33,6 +38,61 @@ apt install fly-astra-update // обновление через графичес
 ![image](https://github.com/user-attachments/assets/408fd6bd-2f84-46fa-81da-038e968ff2e4)
 
 Идём дальше
+
+Добавим и запустить службу синхронизации времени chrony в автозапуск.
+>[!Warning]
+>Серверная служба chronyd (пакет chrony) Может обеспечивать работу ОС в режиме как сервера точного времени, так и клиента. Является штатной службой времени для использования с контроллерами домена FreeIPA.
+
+```bash
+sudo systemctl status chrony
+если не установлена, установить можно так
+sudo apt install chrony
+sudo systemctl start chrony
+sudo systemctl enable chrony
+```
+Для начала сделаем статический адрес. Отключаем NetworkManager.
+
+```bash
+sudo systemctl status NetworkManager //проверяем статус службы NetworkManager
+sudo systemctl stop NetworkManager //останавливает службу
+sudo systemctl disable NetworkManager //удаляет её из автозагрузки
+sudo systemctl mask NetworkManager //останавливает активность службы
+```
+
+Если всё правильно сделали, то ответ на введённую команду ``sudo systemctl status NetworkManager`` будет таким:
+
+![image](https://github.com/user-attachments/assets/25a62ca3-5814-47af-96a0-37f04065a4f2)
+
+и сеть в трее графического интерфейса будет не активна.
+
+![image](https://github.com/user-attachments/assets/d7ecd977-c8da-4deb-bee6-3f5a0e3046ec)
+
+Настраиваем статический адрес службы ``networking.service`` вводим команду: ``nano /etc/network/interfaces``
+```bash
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+auto eth0
+allow-hotplug eth0
+iface eth0 inet static
+address x.x.x.x
+netmask 255.255.255.0
+gateway x.x.x.x
+```
+Чтобы применить новые настройки, достаточно перезапустить службу ``networking`` командой ``systemctl restart networking``. Может потребоваться также очистить старое соединение командой ``ip addr flush dev <имя устройства>``:
+```bash
+sudo ip addr flush dev eth0
+sudo systemctl restart networking
+Проверяем
+ping 77.88.8.8 -c 4
+```
+Далее 
 
 Скачиваем архив CDinstall_2.0.2024.14752_Astra_1.7.4_offline.zip
 закидываем в корень папки ``/mnt`` переходим в неё и распаковываем
