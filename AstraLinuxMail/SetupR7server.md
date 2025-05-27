@@ -92,6 +92,17 @@ sudo systemctl restart networking
 Проверяем
 ping 77.88.8.8 -c 4
 ```
+Теперь в файл hosts добавим строки с именем сервера ``nano /etc/hosts``.
+```bash
+127.0.0.1        localhost.localdomain localhost
+# 127.0.1.1      dc01.it.company.lan dc01   --обязательно закомментировать
+x.x.x.x          dc01.it.company.lan dc01
+
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+```
 Далее 
 
 Скачиваем архив CDinstall_2.0.2024.14752_Astra_1.7.4_offline.zip
@@ -109,19 +120,19 @@ cd /mnt/CDDiskPack/CDinstall_Astra_1.7.4/sslcert
 
 - Шаг 1: Создайте закрытый ключ сервера
 ```bash
-openssl genrsa -out itcompany.key 2048
+openssl genrsa -out it.company.lan.key 2048
 ```
 ![image](https://github.com/user-attachments/assets/89515eed-2a64-4bce-b2ca-12f461e262ad)
 
 - Шаг 2: Создайте запрос подписи сертификата (CSR)
 ```bash
-openssl req -new -key itcompany.key -out itcompany.csr
+openssl req -new -key it.company.lan.key -out it.company.lan.csr
 ```
 ![image](https://github.com/user-attachments/assets/cf6ec119-1d8c-4321-bc1c-cffe7a185177)
 
 - Шаг 3: Подпишите сертификат с помощью закрытого ключа и CSR
 ```bash
-openssl x509 -req -days 365 -in itcompany.csr -signkey itcompany.key -out itcompany.crt
+openssl x509 -req -days 365 -in it.company.lan.csr -signkey it.company.lan.key -out it.company.lan.crt
 ```
 ![image](https://github.com/user-attachments/assets/fc9f18d3-24b7-4ed1-be15-2a9f75cd99a2)
 
@@ -139,7 +150,7 @@ openssl dhparam -out dhparam.pem 2048
 
 Проверяем
 ```bash
-openssl req -in itcompany.csr -noout -text
+openssl req -in it.company.lan.csr -noout -text
 ```
 ![image](https://github.com/user-attachments/assets/4813c5fb-bc7b-4e86-bb5c-b1d82cb07503)
 
