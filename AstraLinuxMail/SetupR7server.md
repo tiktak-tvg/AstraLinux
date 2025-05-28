@@ -30,7 +30,9 @@ apt install dnsutils
 
 Должна быть 1.7.4.7
 
-Идём дальше
+![image](https://github.com/user-attachments/assets/c2fa9d37-a6b9-4f5f-a2ca-4ef459b63541)
+
+Если версия такая, идём дальше.
 
 Добавим и запустить службу синхронизации времени chrony в автозапуск.
 >[!Warning]
@@ -43,14 +45,12 @@ sudo systemctl start chrony
 sudo systemctl enable chrony
 ```
 Делаем статический адрес. Отключаем NetworkManager.
-
 ```bash
 sudo systemctl status NetworkManager //проверяем статус службы NetworkManager
 sudo systemctl stop NetworkManager //останавливает службу
 sudo systemctl disable NetworkManager //удаляет её из автозагрузки
 sudo systemctl mask NetworkManager //останавливает активность службы
 ```
-
 Если всё правильно сделали, то ответ на введённую команду ``sudo systemctl status NetworkManager`` будет таким:
 
 ![image](https://github.com/user-attachments/assets/25a62ca3-5814-47af-96a0-37f04065a4f2)
