@@ -285,7 +285,7 @@ SPF-запись v=spf1 +mx ~all разрешит отправку писем т
 
 ![image](https://github.com/user-attachments/assets/c448c0a8-fdb4-4ac0-9ef2-2eceaa52e8d5)
 
-![42](https://github.com/user-attachments/assets/610075b4-b851-4dd6-b499-b17a9af3de32)
+![image](https://github.com/user-attachments/assets/0592798f-cdfc-4794-85fd-5d62cbe79b03)
 
 ![43](https://github.com/user-attachments/assets/396395fb-010e-4b6d-8c33-a9d1c7243f25)
 
@@ -300,4 +300,24 @@ selector._domainkey.it.company.lan.  TXT  "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQE
 ```
 После инсталляции в консоли будет предложено сделать TXT запись.
 
+Установка завершена, теперь, чтобы всё заработало нужно добавить сертификат в доверенные.
+```bash
+переходим в папку
+cd /mnt/CDDiskPack/CDinstall_Astra_1.7.4/sslcert
+/mnt/CDDiskPack/CDinstall_Astra_1.7.4/sslcert# ls
+it.company.lan.crt  it.company.lan.csr  it.company.lan.key
 
+cp it.company.lan.crt /usr/local/share/ca-certificates/
+```
+![image](https://github.com/user-attachments/assets/3ad2fdc2-1178-4d1a-b10d-d46a9eb9f30e)
+
+Обновите хранилище сертификатов командой:
+```bash
+update-ca-certificates -v
+```bash
+Если сертификаты успешно добавлены, появится сообщение о том, что сертфикат скопирован в /etc/ssl/certs/:
+```bash
+Updating certificates in /etc/ssl/certs…
+2 added, 9 removed; done.
+Running hooks in /etc/ca-certificates/update.d
+```
