@@ -321,6 +321,12 @@ Running hooks in /etc/ca-certificates/update.d
 ```bash
 #openssl verify my_trusted_sub_ca.crt
 ```
+![image](https://github.com/user-attachments/assets/9d33ea5b-6500-42c0-9f81-555bf97aadd1)
+
+Чтобы проверить, что ваш хост доверяет ли SSL сертификату на определенном сайте, выполните команду:
+```bash
+ curl –I https://admin.it.company.lan
+```
 Если сервер не доверяет сертификату, появится ошибка:
 ```bash
 error 20 at 0 depth lookup: unable to get local issuer certificate
