@@ -45,6 +45,13 @@ sudo systemctl start chrony
 sudo systemctl enable chrony
 ```
 Делаем статический адрес. Отключаем NetworkManager.
+
+Переписываем свой IP дарес, шлюз, маску.
+```bash
+nmcli dev show
+```
+![image](https://github.com/user-attachments/assets/05e4688e-3c78-4bc4-a090-482da2834764)
+
 ```bash
 sudo systemctl status NetworkManager //проверяем статус службы NetworkManager
 sudo systemctl stop NetworkManager //останавливает службу
@@ -75,8 +82,7 @@ gateway x.x.x.x
 ```
 Чтобы применить новые настройки, достаточно перезапустить службу ``networking`` командой ``systemctl restart networking``. Может потребоваться также очистить старое соединение командой ``ip addr flush dev <имя устройства>``:
 ```bash
-sudo ip addr flush dev eth0
-sudo systemctl restart networking
+sudo ip addr flush dev eth0 && systemctl restart networking
 Проверяем
 ping 77.88.8.8 -c 4
 ```
