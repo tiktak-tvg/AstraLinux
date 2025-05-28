@@ -148,19 +148,19 @@ cd /mnt/CDDiskPack/CDinstall_Astra_1.7.4/sslcert
 ```bash
 openssl genrsa -out it.company.lan.key 2048
 ```
-![image](https://github.com/user-attachments/assets/89515eed-2a64-4bce-b2ca-12f461e262ad)
+![image](https://github.com/user-attachments/assets/e85db849-8f10-4fd0-a6ca-439c41394a2d)
 
 - Шаг 2: Создайте запрос подписи сертификата (CSR)
 ```bash
 openssl req -new -key it.company.lan.key -out it.company.lan.csr
 ```
-![image](https://github.com/user-attachments/assets/cf6ec119-1d8c-4321-bc1c-cffe7a185177)
+![image](https://github.com/user-attachments/assets/12c662e8-cbdc-4622-ad39-e9e3ab0b7c4b)
 
 - Шаг 3: Подпишите сертификат с помощью закрытого ключа и CSR
 ```bash
 openssl x509 -req -days 365 -in it.company.lan.csr -signkey it.company.lan.key -out it.company.lan.crt
 ```
-![image](https://github.com/user-attachments/assets/fc9f18d3-24b7-4ed1-be15-2a9f75cd99a2)
+![image](https://github.com/user-attachments/assets/2243e650-0e9a-4da7-8e26-117a42fe054f)
 
 Вы только что сгенерировали SSL-сертификат со сроком действия 365 дней.
 
@@ -178,7 +178,7 @@ openssl dhparam -out dhparam.pem 2048
 ```bash
 openssl req -in it.company.lan.csr -noout -text
 ```
-![image](https://github.com/user-attachments/assets/4813c5fb-bc7b-4e86-bb5c-b1d82cb07503)
+![image](https://github.com/user-attachments/assets/3dc3494d-1189-4df5-bdf2-1e88b5b24914)
 
 Далее переходим к скрипту запуска
 ```bash
