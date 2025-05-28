@@ -317,3 +317,14 @@ Updating certificates in /etc/ssl/certs…
 2 added, 9 removed; done.
 Running hooks in /etc/ca-certificates/update.d
 ```
+Вы можете убедиться, что ваша ОС доверяет сертификату с помощью команду:
+```bash
+#openssl verify my_trusted_sub_ca.crt
+```
+Если сервер не доверяет сертификату, появится ошибка:
+```bash
+error 20 at 0 depth lookup: unable to get local issuer certificate
+error my_trusted_sub_ca.crt: verification failed
+```
+
+
