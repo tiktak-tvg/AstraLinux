@@ -46,19 +46,23 @@ sudo systemctl enable chrony
 ```
 Делаем статический адрес. Отключаем NetworkManager.
 
-Переписываем свой IP дарес, шлюз, маску.
+Переписываем свой IP дарес, шлюз, маску, не ошибиться при настройке статического IP-адреса.
 ```bash
 nmcli dev show
 ```
 ![image](https://github.com/user-attachments/assets/05e4688e-3c78-4bc4-a090-482da2834764)
 
+Откючаем и забываем, на серверах не должно быть динамического адреса.
 ```bash
 sudo systemctl status NetworkManager //проверяем статус службы NetworkManager
 sudo systemctl stop NetworkManager //останавливает службу
 sudo systemctl disable NetworkManager //удаляет её из автозагрузки
 sudo systemctl mask NetworkManager //останавливает активность службы
+astra-noautonet-control disable //контрольный выстрел
 ```
-Если всё правильно сделали, то ответ на введённую команду ``sudo systemctl status NetworkManager`` будет таким:
+![image](https://github.com/user-attachments/assets/27f2a9f5-b55a-44fc-ba41-1345cd231627)
+
+Если всё правильно сделали, то ответ на введённую команду ``sudo systemctl status NetworkManager`` после перезагрузки будет таким:
 
 ![image](https://github.com/user-attachments/assets/25a62ca3-5814-47af-96a0-37f04065a4f2)
 
@@ -76,10 +80,12 @@ iface lo inet loopback
 auto eth0
 allow-hotplug eth0
 iface eth0 inet static
-address x.x.x.x
-netmask 255.255.255.x
-gateway x.x.x.x
+address 192.168.18.142
+netmask 255.255.255.0
+gateway 192.168.18.2
 ```
+![image](https://github.com/user-attachments/assets/aae641c2-08c3-4644-899b-5731fae9a0c9)
+
 Чтобы применить новые настройки, достаточно перезапустить службу ``networking`` командой ``systemctl restart networking``. Может потребоваться также очистить старое соединение командой ``ip addr flush dev <имя устройства>``:
 ```bash
 sudo ip addr flush dev eth0 && systemctl restart networking
