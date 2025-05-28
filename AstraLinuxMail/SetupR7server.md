@@ -1,6 +1,6 @@
 #### Установка Корпоративного сервера 2024 offline-версии для ОС Astra.
 
-Установка произваодится на VM Ware Workstation, версия ОС Астра 1.7.4 будет обновлена до 1.7.7.9
+Установка произваодится на VM Ware Workstation, версия ОС Астра 1.7.4
 
 Установка состоит из двух этапов:
 
@@ -22,20 +22,13 @@ apt install open-vm-tools
 ```bash
 apt update
 apt install astra-update
-apt install fly-astra-update // обновление через графический интерфейс
+apt install dnsutils
 ```
-![image](https://github.com/user-attachments/assets/eddc9d5e-6f22-4436-9473-5c3d796eda11)
+Всё, больше н каких манипуляций с обновлениями.
 
-![image](https://github.com/user-attachments/assets/b58a3d64-660f-4010-9e4d-273ee12cb15a)
+Проверим версию ``cat /etc/astra/build_version``
 
-
-Команда ``fly-astra-update``  запустит графический интерфейс
-
-Команда ``astra-update -A -r -T`` аналогична с командой ``dist-upgrade``
-
-После обновления проверим версию ``cat /etc/astra/build_version``
-
-![image](https://github.com/user-attachments/assets/408fd6bd-2f84-46fa-81da-038e968ff2e4)
+Должна быть 1.7.4.7
 
 Идём дальше
 
@@ -43,14 +36,13 @@ apt install fly-astra-update // обновление через графичес
 >[!Warning]
 >Серверная служба chronyd (пакет chrony) Может обеспечивать работу ОС в режиме как сервера точного времени, так и клиента. Является штатной службой времени для использования с контроллерами домена FreeIPA.
 
+Служба chrony по умолчанию не установлена, установить можно так
 ```bash
-sudo systemctl status chrony
-если не установлена, установить можно так
 sudo apt install chrony
 sudo systemctl start chrony
 sudo systemctl enable chrony
 ```
-Для начала сделаем статический адрес. Отключаем NetworkManager.
+Делаем статический адрес. Отключаем NetworkManager.
 
 ```bash
 sudo systemctl status NetworkManager //проверяем статус службы NetworkManager
@@ -62,10 +54,6 @@ sudo systemctl mask NetworkManager //останавливает активнос
 Если всё правильно сделали, то ответ на введённую команду ``sudo systemctl status NetworkManager`` будет таким:
 
 ![image](https://github.com/user-attachments/assets/25a62ca3-5814-47af-96a0-37f04065a4f2)
-
-и сеть в трее графического интерфейса будет не активна.
-
-![image](https://github.com/user-attachments/assets/d7ecd977-c8da-4deb-bee6-3f5a0e3046ec)
 
 Настраиваем статический адрес службы ``networking.service`` вводим команду: ``nano /etc/network/interfaces``
 ```bash
@@ -95,8 +83,8 @@ ping 77.88.8.8 -c 4
 Теперь в файл hosts добавим строки с именем сервера ``nano /etc/hosts``.
 ```bash
 127.0.0.1        localhost.localdomain localhost
-# 127.0.1.1      astra7.it.company.lan astra7   --обязательно закомментировать
-x.x.x.x          astra7.it.company.lan astra7
+# 127.0.1.1      r7mail.it.company.lan r7mail   --обязательно закомментировать
+x.x.x.x          r7mail.it.company.lan r7mail
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     localhost ip6-localhost ip6-loopback
@@ -105,7 +93,7 @@ ff02::2 ip6-allrouters
 ```
 Настраиваем ``FQDN`` имя первого контроллера домена:
 ```bash
-hostnamectl set-hostname astra7.it.company.lan
+hostnamectl set-hostname r7mail.it.company.lan
 ```
 Перезапустим сетевой интерфейс для применения настроек
 ```bash 
@@ -116,10 +104,10 @@ systemctl restart networking.service
 hostname -s
 hostname -f // если не работает проверяем запись в файле etc/hosts
 ```
-Далее 
+#### Установка Корпоративного сервера 2024 offline-версии. 
 
-Скачиваем архив CDinstall_2.0.2024.14752_Astra_1.7.4_offline.zip
-закидываем в корень папки ``/mnt`` переходим в неё и распаковываем
+Скачиваем с их сайта архив CDinstall_2.0.2024.14752_Astra_1.7.4_offline.zip<br>
+или с нашей шары и закидываем в корень папки ``/mnt`` переходим в неё и распаковываем
 ```bash
 cd /mnt/
 unzip CDinstall_2.0.2024.14752_Astra_1.7.4_offline.zip
@@ -169,6 +157,9 @@ openssl req -in it.company.lan.csr -noout -text
 
 Далее переходим к скрипту запуска
 ```bash
+mnt/CDDiskPack/CDinstall_Astra_1.7.4/sslcert/#
+cd ..
+/mnt/CDDiskPack/CDinstall_Astra_1.7.4/#
 chmod +x offline_installer.sh
 запускаем
 ./offline_installer.sh
@@ -207,13 +198,6 @@ chmod +x offline_installer.sh
 
 >[!Warning]
 >Если Вы выбрали установки без HTTPS, то, после инсталляции, почтовый сервер работать не будет. Он не запустится.
-
-Для его работы необходимо положить сертификаты по пути:
-```bash
-smtpd_tls_cert_file = /etc/nginx/ssl/it.company.lan.crt
-smtpd_tls_key_file = /etc/nginx/ssl/it.company.lan.key
-```
-Продолжим установку.
 
 ![image](https://github.com/user-attachments/assets/ae23bfe7-4777-4147-ae3a-4776c64e94a2)
 
@@ -277,8 +261,9 @@ MX-запись указывает на доменное имя почтовог
 
 Проверить MX-записи можно через команды в терминале:
 ```bash
-nslookup -type=mx it.company.lan (Windows)
-dig mx it.company.lan (Linux/macOS).
+nslookup -type=mx it.company.lan
+или так
+dig mx it.company.lan 
 ```
 Запись ``v=spf1 +mx ~all`` в DNS — это SPF-запись, которая помогает защитить домен от подделки электронной почты (спуфинга). <br>Она указывает, какие серверы имеют право отправлять письма от имени вашего домена.<br>
 SPF-запись v=spf1 +mx ~all разрешит отправку писем только с astra7.it.company.lan, а письма с других серверов будут отклонены или помечены.
