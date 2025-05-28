@@ -279,10 +279,7 @@ SPF-запись v=spf1 +mx ~all разрешит отправку писем т
 
 Идём далее
 
-![40](https://github.com/user-attachments/assets/3b0169ce-0a52-4fcd-bd48-c21225b4dc85)
-
-
-![41](https://github.com/user-attachments/assets/30ce2450-33aa-4bfb-8a33-811aa251a2fa)
+![image](https://github.com/user-attachments/assets/c448c0a8-fdb4-4ac0-9ef2-2eceaa52e8d5)
 
 ![42](https://github.com/user-attachments/assets/610075b4-b851-4dd6-b499-b17a9af3de32)
 
