@@ -240,10 +240,6 @@ chmod +x offline_installer.sh
 
 ![image](https://github.com/user-attachments/assets/a3bc029d-20b3-4918-860b-77c4556ccbef)
 
-Если всё сделали правильно в конце отработки скрипта получаем это
-
-![image](https://github.com/user-attachments/assets/b838aff3-72b6-4ae4-ae91-b6326baa00f7)
-
 #### Установка почтового сервера R7.
 
 >[!Warning]
