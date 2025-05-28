@@ -50,7 +50,7 @@ sudo systemctl enable chrony
 ```bash
 nmcli dev show
 ```
-![image](https://github.com/user-attachments/assets/05e4688e-3c78-4bc4-a090-482da2834764)
+![image](https://github.com/user-attachments/assets/e4dfa035-87bb-48e1-8a0e-11a11db3717f)
 
 Откючаем и забываем, на серверах не должно быть динамического адреса.
 ```bash
@@ -61,10 +61,6 @@ sudo systemctl mask NetworkManager //останавливает активнос
 astra-noautonet-control disable //контрольный выстрел
 ```
 ![image](https://github.com/user-attachments/assets/27f2a9f5-b55a-44fc-ba41-1345cd231627)
-
-Если всё правильно сделали, то ответ на введённую команду ``sudo systemctl status NetworkManager`` после перезагрузки будет таким:
-
-![image](https://github.com/user-attachments/assets/25a62ca3-5814-47af-96a0-37f04065a4f2)
 
 Настраиваем статический адрес службы ``networking.service`` вводим команду: ``nano /etc/network/interfaces``
 ```bash
@@ -80,32 +76,44 @@ iface lo inet loopback
 auto eth0
 allow-hotplug eth0
 iface eth0 inet static
-address 192.168.18.142
+address 192.168.25.100
 netmask 255.255.255.0
-gateway 192.168.18.2
+gateway 192.168.25.10
 ```
-![image](https://github.com/user-attachments/assets/aae641c2-08c3-4644-899b-5731fae9a0c9)
+![image](https://github.com/user-attachments/assets/b0a9000c-6466-477b-9e61-1952c9560ccb)
 
-Чтобы применить новые настройки, достаточно перезапустить службу ``networking`` командой ``systemctl restart networking``. Может потребоваться также очистить старое соединение командой ``ip addr flush dev <имя устройства>``:
+Чтобы применить новые настройки, перезагружаем машину:
 ```bash
-sudo ip addr flush dev eth0 && systemctl restart networking
-Проверяем
+reboot
+```
+Если всё правильно сделали, то ответ на введённую команду ``sudo systemctl status NetworkManager`` после перезагрузки ответ будет таким, пока не перезагружаем:
+
+![image](https://github.com/user-attachments/assets/25a62ca3-5814-47af-96a0-37f04065a4f2)
+
+После загрузки, проверяем
+```bash
 ping 77.88.8.8 -c 4
 ```
+![image](https://github.com/user-attachments/assets/f3779d53-5032-45f7-bdab-ffa28a56d2ab)
+
+Если пинга нет, смотрите прописаны ли DNS записи в файле ``nano /etc/resolv.conf``. 
+
 Теперь в файл hosts добавим строки с именем сервера ``nano /etc/hosts``.
 ```bash
-127.0.0.1        localhost.localdomain localhost
-# 127.0.1.1      r7mail.it.company.lan r7mail   --обязательно закомментировать
-x.x.x.x          r7mail.it.company.lan r7mail
+127.0.0.1        localhost.localdomain   localhost
+# 127.0.1.1      lamba.it.company.lan    lamba   --обязательно закомментировать
+x.x.x.x          lamba.it.company.lan    lamba
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     localhost ip6-localhost ip6-loopback
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 ```
+![image](https://github.com/user-attachments/assets/4fdc6c41-d6fe-400b-be70-cc632ba90b8c)
+
 Настраиваем ``FQDN`` имя первого контроллера домена:
 ```bash
-hostnamectl set-hostname r7mail.it.company.lan
+hostnamectl set-hostname lamba.it.company.lan
 ```
 Перезапустим сетевой интерфейс для применения настроек
 ```bash 
@@ -116,6 +124,8 @@ systemctl restart networking.service
 hostname -s
 hostname -f // если не работает проверяем запись в файле etc/hosts
 ```
+![image](https://github.com/user-attachments/assets/9c6760a3-3d31-404f-b0d8-50536fdac863)
+
 #### Установка Корпоративного сервера 2024 offline-версии. 
 
 Скачиваем с их сайта архив CDinstall_2.0.2024.14752_Astra_1.7.4_offline.zip<br>
@@ -124,11 +134,14 @@ hostname -f // если не работает проверяем запись в
 cd /mnt/
 unzip CDinstall_2.0.2024.14752_Astra_1.7.4_offline.zip
 ```
+![image](https://github.com/user-attachments/assets/29d3d29e-d27f-4732-8851-918518dc749f)
+
 После распаковки заходим в папку
 ```bash
 cd /mnt/CDDiskPack/CDinstall_Astra_1.7.4/sslcert
+/mnt/CDDiskPack/CDinstall_Astra_1.7.4/sslcert#
 ```
-#### Генерация самоподписанных сертификатов
+##### Генерируем самоподписанные сертификаты.
 Генерация самоподписанных SSL-сертификатов включает в себя три простых шага:
 
 - Шаг 1: Создайте закрытый ключ сервера
@@ -152,7 +165,7 @@ openssl x509 -req -days 365 -in it.company.lan.csr -signkey it.company.lan.key -
 Вы только что сгенерировали SSL-сертификат со сроком действия 365 дней.
 
 
-##### Усиление безопасности сервера
+##### Усиление безопасности сервера(можно пока не делать).
 Инструкциия по усилению безопасности вашего сервера.
 
 Для этого необходимо сгенерировать параметры Диффи-Хеллмана (DHE), обеспечивающие более высокую стойкость.
