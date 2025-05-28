@@ -30,7 +30,7 @@ apt install dnsutils
 
 Должна быть 1.7.4.7
 
-![image](https://github.com/user-attachments/assets/c2fa9d37-a6b9-4f5f-a2ca-4ef459b63541)
+![image](https://github.com/user-attachments/assets/7050daa1-c528-4897-b120-892af3d87965)
 
 Если версия такая, идём дальше.
 
