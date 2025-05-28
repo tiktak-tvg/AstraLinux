@@ -219,7 +219,7 @@ chmod +x offline_installer.sh
 
 ![image](https://github.com/user-attachments/assets/2f2e3341-85de-458d-8aac-40ca5e562733)
 
-![image](https://github.com/user-attachments/assets/fc587c14-bb22-4463-8bdd-08fa4baa9c5f)
+![image](https://github.com/user-attachments/assets/79e5b956-5dbf-4db6-8240-77bacc7ed8df)
 
 >[!Warning]
 >Если Вы выбрали установки без HTTPS, то, после инсталляции, почтовый сервер работать не будет. Он не запустится.
