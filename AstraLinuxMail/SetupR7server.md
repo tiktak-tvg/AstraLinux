@@ -244,22 +244,6 @@ chmod +x offline_installer.sh
 
 ![image](https://github.com/user-attachments/assets/b838aff3-72b6-4ae4-ae91-b6326baa00f7)
 
-![image](https://github.com/user-attachments/assets/7fa05785-fa54-4e92-b507-a63d709708bc)
-
-Заходим
-
-![image](https://github.com/user-attachments/assets/896a0b8a-2ba6-43a3-844c-69371444be2f)
-
-![image](https://github.com/user-attachments/assets/e05af1a9-e05a-49e0-adf7-af8fa64f2e44)
-
-![image](https://github.com/user-attachments/assets/562ab3b9-f729-40a9-ba95-1bea86127cab)
-
-![image](https://github.com/user-attachments/assets/fd12a237-f8cd-4d04-a1fd-7653eb6b54e8)
-
-![image](https://github.com/user-attachments/assets/254bffd7-6831-4287-a0eb-24214866040f)
-
-![image](https://github.com/user-attachments/assets/f4025aea-f015-4df2-8d7e-9cfaf3ddc3ad)
-
 #### Установка почтового сервера R7.
 
 >[!Warning]
@@ -271,10 +255,10 @@ chmod +x offline_installer.sh
 
 |        |it.company.lan       	|TTL          	|Приоритет
 |--------|-----------------------|---------------|--------------|
-|MX	 |astra7.it.company.lan  |300            |10		|
+|MX	 |lamba.it.company.lan  |300            |10		|
 |TXT     |it.company.lan         |TTL            |		|
 |	 |v=spf1+mx~all          |300            |		|
-|A       |astra7.it.company.lan  |TTL            |		|
+|A       |lamba.it.company.lan  |TTL            |		|
 |	 |192.168.18.141          |300            |		|
    
 Теперь по подробней.
@@ -291,13 +275,12 @@ nslookup -type=mx it.company.lan
 dig mx it.company.lan 
 ```
 Запись ``v=spf1 +mx ~all`` в DNS — это SPF-запись, которая помогает защитить домен от подделки электронной почты (спуфинга). <br>Она указывает, какие серверы имеют право отправлять письма от имени вашего домена.<br>
-SPF-запись v=spf1 +mx ~all разрешит отправку писем только с astra7.it.company.lan, а письма с других серверов будут отклонены или помечены.
+SPF-запись v=spf1 +mx ~all разрешит отправку писем только с lamba.it.company.lan, а письма с других серверов будут отклонены или помечены.
 
-Если выбрали, то установка запустится автоматически.
+Идём далее
 
 ![40](https://github.com/user-attachments/assets/3b0169ce-0a52-4fcd-bd48-c21225b4dc85)
 
-Если нет, то надо добавить сертификаты п. выше и запустить в ручную скрипт ``install_mailserver.sh``
 
 ![41](https://github.com/user-attachments/assets/30ce2450-33aa-4bfb-8a33-811aa251a2fa)
 
