@@ -24,7 +24,7 @@ apt update
 apt install astra-update
 apt install dnsutils
 ```
-Всё, больше н каких манипуляций с обновлениями.
+Всё, больше никаких манипуляций с обновлениями.
 
 Проверим версию ``cat /etc/astra/build_version``
 
