@@ -128,7 +128,7 @@ hostname -f // если не работает проверяем запись в
 
 #### Установка Корпоративного сервера 2024 offline-версии. 
 
-Скачиваем с их сайта архив CDinstall_2.0.2024.14752_Astra_1.7.4_offline.zip<br>
+Скачиваем с их сайта архив **Оффлайн установка** CDinstall_2.0.2024.14752_Astra_1.7.4_offline.zip<br>
 
 > https://r7-office.ru/downloadserver#retail
 
