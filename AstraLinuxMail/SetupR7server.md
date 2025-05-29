@@ -302,11 +302,14 @@ selector._domainkey.it.company.lan.  TXT  "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQE
 Установка завершена, теперь, чтобы всё заработало нужно добавить сертификат в доверенные.
 ```bash
 переходим в папку
-cd /mnt/CDDiskPack/CDinstall_Astra_1.7.4/sslcert
+
+#cd /mnt/CDDiskPack/CDinstall_Astra_1.7.4/sslcert
+
 /mnt/CDDiskPack/CDinstall_Astra_1.7.4/sslcert# ls
 it.company.lan.crt  it.company.lan.csr  it.company.lan.key
 
-cp it.company.lan.crt /usr/local/share/ca-certificates/
+Копируем наш сертификат
+#cp it.company.lan.crt /usr/local/share/ca-certificates/
 ```
 ![image](https://github.com/user-attachments/assets/3ad2fdc2-1178-4d1a-b10d-d46a9eb9f30e)
 
@@ -322,7 +325,7 @@ Running hooks in /etc/ca-certificates/update.d
 ```
 Вы можете убедиться, что ваша ОС доверяет сертификату с помощью команду:
 ```bash
-#openssl verify my_trusted_sub_ca.crt
+#openssl verify it.company.lan.crt
 ```
 ![image](https://github.com/user-attachments/assets/9d33ea5b-6500-42c0-9f81-555bf97aadd1)
 
