@@ -157,15 +157,14 @@ openssl genrsa -out it.company.lan.key 2048
 ```bash
 openssl req -new -key it.company.lan.key -out it.company.lan.csr
 
-Country Name (2 letter code) [AU]:
-State or Province Name (full name) [Some-State]:
-Locality Name (eg, city) []:
-Organization Name (eg, company) [Internet Widgits Pty Ltd]:
-Organizational Unit Name (eg, section) []:
-Common Name (e.g. server FQDN or YOUR name) []:
-Email Address []:
+Country Name (2 letter code) [AU]:RU
+State or Province Name (full name) [Some-State]:Moscow
+Locality Name (eg, city) []:Moscow
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:Rosreestr
+Organizational Unit Name (eg, section) []:IT
+Common Name (e.g. server FQDN or YOUR name) []:ald.vit.lan
+Email Address []:info@ald.vit.lan
 ```
-![image](https://github.com/user-attachments/assets/12c662e8-cbdc-4622-ad39-e9e3ab0b7c4b)
 
 CSR обычно содержит следующую информацию:
 | Параметр | Описание	            | Пример
