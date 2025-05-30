@@ -147,10 +147,15 @@ gateway 192.168.25.10
 - gateway 192.168.25.10  --шлюз
 >[!Warning]
 >Эти записи в файле /etc/network/interfaces
+
 >dns-domain it.company.lan
+
 >dns-nameservers 192.168.25.10
+
 >работать не будут, так как
+
 >Имя домена: "it.company.lan" (используется пакетом resolvconf)
+
 >IP-адрес сервера DNS: 192.168.25.10 (используется пакетом resolvconf)
 
 
