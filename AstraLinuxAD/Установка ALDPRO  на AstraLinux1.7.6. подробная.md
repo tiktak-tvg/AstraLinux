@@ -114,7 +114,34 @@ ip a show dev eth0
 >[!Warning]
 >На рабочих станциях этого делать не обязательно, да и не нужно.
 
-Мы будем использовать службу ``networking``
+Мы будем использовать службу ``networking.service``
+
+Настраиваем статический адрес службы ``networking.service`` вводим команду: ``nano /etc/network/interfaces``
+```bash
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+auto eth0
+allow-hotplug eth0
+iface eth0 inet static
+address 192.168.25.115
+netmask 255.255.255.0
+gateway 192.168.25.10
+```
+![image](https://github.com/user-attachments/assets/4389923f-e7d5-4443-a7a5-ab44d957bdc7)
+
+- auto eth0  --поднимать интерфейс автоматически при старте системы
+- allow-hotplug eth0 --автоматически выполнять перезапуск интерфейса при его падении
+- iface eth0 inet static --к какому интерфейсу мы привязываем статический адрес
+- address 192.168.25.115 --статический адрес
+- netmask 255.255.255.0  --маска
+- gateway 192.168.25.10  --шлюз
 
 >Во избежание конфликтов между службами отключить, остановить и заблокировать все остальные службы управления сетевыми интерфейсами
 
@@ -151,33 +178,15 @@ astra-noautonet-control status
 
 ![image](https://github.com/user-attachments/assets/d7ecd977-c8da-4deb-bee6-3f5a0e3046ec)
 
-Настраиваем статический адрес службы ``networking.service`` вводим команду: ``nano /etc/network/interfaces``
+Если пропал файл ``/etc/resolv.conf`` просто создайте его заново и внесите такие данные
 ```bash
-# This file describes the network interfaces available on your system
-# and how to activate them. For more information, see interfaces(5).
+suod nano /etc/resolv.conf
 
-source /etc/network/interfaces.d/*
-
-# The loopback network interface
-auto lo
-iface lo inet loopback
-
-auto eth0
-allow-hotplug eth0
-iface eth0 inet static
-address 192.168.25.115
-netmask 255.255.255.0
-gateway 192.168.25.10
+search it.company.lan
+#nameserver 192.168.5.15
+#nameserver 192.168.25.20
+nameserver 77.88.8.8
 ```
-![image](https://github.com/user-attachments/assets/4389923f-e7d5-4443-a7a5-ab44d957bdc7)
-
-- auto eth0  --поднимать интерфейс автоматически при старте системы
-- allow-hotplug eth0 --автоматически выполнять перезапуск интерфейса при его падении
-- iface eth0 inet static --к какому интерфейсу мы привязываем статический адрес
-- address 192.168.25.115 --статический адрес
-- netmask 255.255.255.0  --маска
-- gateway 192.168.25.10  --шлюз
-
 Чтобы применить новые настройки, достаточно перезапустить службу ``networking`` командой ``systemctl restart networking``. Может потребоваться также очистить старое соединение командой ``ip addr flush dev <имя устройства>``:
 ```bash
 sudo ip addr flush dev eth0
