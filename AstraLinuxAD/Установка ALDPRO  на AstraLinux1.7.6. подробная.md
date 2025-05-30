@@ -143,9 +143,9 @@ astra-noautonet-control is-enabled
 astra-noautonet-control status
 НЕАКТИВНО
 ```
-Если всё правильно сделали, то ответ на введённую команду ``sudo systemctl status NetworkManager`` будет таким:
+Если всё правильно сделали, то ответ на введённые команды по статусу, например ``sudo systemctl status NetworkManager`` будет таким:
 
-![image](https://github.com/user-attachments/assets/25a62ca3-5814-47af-96a0-37f04065a4f2)
+![image](https://github.com/user-attachments/assets/691a469d-e5db-4101-91c5-b5a38e2aef26)
 
 и сеть в трее графического интерфейса будет не активна.
 
