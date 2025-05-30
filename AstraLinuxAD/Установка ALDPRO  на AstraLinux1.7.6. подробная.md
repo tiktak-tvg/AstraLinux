@@ -103,7 +103,7 @@ route
 
 или так
 ```bash
-nmcli dev sh
+nmcli dev sh            //nmcli эта команда работает только при сетевой службе NetworkManager
 ```
 или так
 ```bash
@@ -114,7 +114,10 @@ ip a show dev eth0
 >[!Warning]
 >На рабочих станциях этого делать не обязательно, да и не нужно.
 
-Мы будем использовать службу ``networking.service``
+Мы будем использовать службу ``networking.service`` и соответственно команды пакета ``ifupifdown``<br>
+Проверить корректность файла: ``sudo ifquery eth0``<br>
+Перезапустить интерфейс. Лучше всегда делать это одной командой, чтобы не потерять машину при работе через удалённое подключение:
+``sudo ifdown eth0; sudo ifup eth0``
 
 Настраиваем статический адрес службы ``networking.service`` вводим команду: ``nano /etc/network/interfaces``
 ```bash
@@ -182,7 +185,7 @@ astra-noautonet-control disable
 suod nano /etc/resolv.conf
 
 search it.company.lan
-#nameserver 192.168.5.15
+#nameserver 192.168.5.15   //если у вас есть маршурты проброса DNS relay (выполняет роль посредника между клиентскими устройствами внутри сети и удаленным DNS-сервером) их тоже надо прописать посмотреть в начале страницы была команда ``nmcli dev show``
 #nameserver 192.168.25.20
 nameserver 77.88.8.8
 ```
