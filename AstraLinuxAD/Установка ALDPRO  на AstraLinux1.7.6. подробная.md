@@ -162,7 +162,7 @@ gateway 192.168.25.10
 
 То нужно связать заглушку, предоставленную systemd-resolved , с /etc/resolv.conf следующим образом:
 ```bash
-#ln -rsf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+# ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 ```
 >Во избежание конфликтов между службами отключить, остановить и заблокировать все остальные службы управления сетевыми интерфейсами
 
