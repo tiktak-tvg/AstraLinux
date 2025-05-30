@@ -114,11 +114,23 @@ ip a show dev eth0
 >[!Warning]
 >На рабочих станциях этого делать не обязательно, да и не нужно.
 
+Мы будем использовать службу ``networking``
+
+>Во избежание конфликтов между службами отключить, остановить и заблокировать все остальные службы управления сетевыми интерфейсами
+
 ```bash
 sudo systemctl status NetworkManager //проверяем статус службы NetworkManager
 sudo systemctl stop NetworkManager //останавливает службу
 sudo systemctl disable NetworkManager //удаляет её из автозагрузки
 sudo systemctl mask NetworkManager //останавливает активность службы
+
+sudo systemctl stop systemd-networkd
+sudo systemctl disable systemd-networkd
+sudo systemctl mask systemd-networkd
+
+служба systemd-networkd устанавливается автоматически
+после установки служба находится в заблокированном состоянии, соответственно, не запускается, и ничем не управляет
+служба systemd-resolved представлена отдельным пакетом systemd-resolved и может быть установлена при необходимости
 ```
 отключает автоматическую настройку сетевых подключений, блокируя работу служб NetworkManager, network-manager и connman, а также отключает элемент управления сетью в трее графического интерфейса.
 ```bash
