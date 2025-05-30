@@ -159,6 +159,21 @@ openssl req -new -key it.company.lan.key -out it.company.lan.csr
 ```
 ![image](https://github.com/user-attachments/assets/12c662e8-cbdc-4622-ad39-e9e3ab0b7c4b)
 
+CSR обычно содержит следующую информацию:
+| Параметр | Описание	            | Пример
+|----------|-----------------------|---------------|
+Common Name или FQDN|	FQDN (fully qualified domain name) - это полное доменное имя вашего сайта. Он должен совпадать с тем, что пользователи вводят в веб-браузере	|wiki.merionet.ru
+Organization Name (e.g., company)	Полное юридическое название вашей организации, включая суффиксы, такие как LLC, Corp и так далее	Merion Networks LTD
+Organizational Unit Name	Отдел в вашей организации, который занимается этим сертификатом	Technology Division
+Locality Name	Город, в котором находится ваша организация	Moscow
+State/Region/Province (full name)	Штат или регион, в котором находится ваша организация	Moscow
+Country Code (2 letter code)	Страна, в которой находится ваша организация. Всегда вводится в виде двухбуквенного кода ISO	RU
+Email Address	Адрес электронной почты, используемый для связи с веб-мастером сайта	info@merionet.ru
+Public Key	втоматически созданный ключ, который создается с помощью CSR и входит в сертификат.
+
+Закодированный текстовый блок похож на закрытый ключ.
+Смотрите пример закрытого ключа ниже.
+
 - Шаг 3: Подпишите сертификат с помощью закрытого ключа и CSR
 ```bash
 openssl x509 -req -days 365 -in it.company.lan.csr -signkey it.company.lan.key -out it.company.lan.crt
