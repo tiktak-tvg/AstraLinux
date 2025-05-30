@@ -204,14 +204,16 @@ suod nano /etc/resolv.conf
 
 search it.company.lan
 #nameserver 192.168.5.15   //если у вас есть маршурты ретрансляторы DNS Relay (выполняет роль посредника между клиентскими устройствами внутри сети и удаленным DNS-сервером)
-их тоже надо прописать, посмотреть можно было в начале страницы была команда ``nmcli dev show``
+их тоже надо прописать, узнать предварительно можно было до отключения ``NetworkManager`` командой ``nmcli dev sh``
 #nameserver 192.168.25.20
 nameserver 77.88.8.8
 ```
 Чтобы применить новые настройки, достаточно перезапустить службу ``networking`` командой ``systemctl restart networking``. Может потребоваться также очистить старое соединение командой ``ip addr flush dev <имя устройства>``:
 ```bash
-sudo ip addr flush dev eth0
 sudo systemctl restart networking
+sudo ip addr flush dev eth0
+или просто ребут системы
+
 Проверяем
 ping 77.88.8.8 -c 4
 ```
@@ -252,36 +254,8 @@ hostname -f // если не работает проверяем запись в
 ```
 ![image](https://github.com/user-attachments/assets/acf5aa2f-4a59-4ab8-9189-a919562c34d5)
 
-Перезапустим виртуальную машину для применения всех настроек
-```bash 
-reboot
-```
-Вводим команду ``nano /etc/resolv.conf`` и смотрим какие данные показывает, если всё настроили правильно должно быть так
-```bash
-search it.company.lan
-nameserver 192.168.25.10
-```
-Вводим команду ``nano /etc/resolv.conf`` и прописываем DNS, чтобы пока у нас работали репозитории
-```bash
-search it.company.lan
-#nameserver 192.168.25.10
-nameserver 77.88.8.8
-```
->[!Warning]
->Если имеется ссылки на другие DNS сервера, то прописывайте их (узнать предваритоельно можно было до отключения ``NetworkManager`` командой ``nmcli dev sh``)
 
-Например
-```bash
-search it.company.lan
-nameserver 192.168.25.1
-nameserver 192.168.25.12
-```
-
-Перезапустим сетевой интерфейс для применения настроек
-```bash 
-systemctl restart networking.service
-```
-После перезагрузки вводим команду ``ifquery`` результат должен быть такой
+Ещё раз проверяем все настройки, вводим команду ``ifquery`` результат должен быть такой
 
 ![image](https://github.com/user-attachments/assets/bb582400-4d85-4e35-80b5-c318fbd18ddd)
 
@@ -302,7 +276,7 @@ hostname -f
 Вводим команду ``nano /etc/apt/sources.list``
 ```bash
 # Astra Linux repository description https://wiki.astralinux.ru/x/0oLiC Основной репозиторий
-#deb https://dl.astralinux.ru/astra/stable/1.7_x86-64/repository-main/ 1.7_x86-64 main contrib non-free
+# deb https://dl.astralinux.ru/astra/stable/1.7_x86-64/repository-main/ 1.7_x86-64 main contrib non-free
 # Оперативные обновления основного репозитория
 deb https://dl.astralinux.ru/astra/stable/1.7_x86-64/repository-update/ 1.7_x86-64 main contrib non-free
 # Рекомендуемые репозитории для установки сервера
@@ -330,8 +304,13 @@ deb https://dl.astralinux.ru/aldpro/frozen/01/2.4.1 1.7_x86-64 main base
 Обновляем
 ```bash
 apt update
- apt list --upgradable
- apt dist-upgrade -y -o Dpkg::Optoins::=--force-confnew
+apt list --upgradable
+apt dist-upgrade -y -o Dpkg::Optoins::=--force-confnew
+
+правильно будет лучше если вместо dist-upgrade использовать аналогичную родную команду ОС Астра Линукс astra-update
+
+apt install astra-update
+astra-update -A -r -T 
 ```
 ![image](https://github.com/user-attachments/assets/6b6178cd-08fc-49d7-a737-56012eac8528)
 
