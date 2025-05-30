@@ -159,17 +159,16 @@ sudo systemctl mask systemd-networkd
 после установки служба находится в заблокированном состоянии, соответственно, не запускается, и ничем не управляет
 служба systemd-resolved представлена отдельным пакетом systemd-resolved и может быть установлена при необходимости
 ```
-отключает автоматическую настройку сетевых подключений, блокируя работу служб NetworkManager, network-manager и connman, а также отключает элемент управления сетью в трее графического интерфейса.
+также отключаем элемент управления сетью в трее графического интерфейса
 ```bash
-astra-noautonet-control <enable/disable/status/is-enabled>
-astra-noautonet-control is-enabled
-ВКЛЮЧЕНО 
-astra-noautonet-control disable 
-astra-noautonet-control is-enabled
-ВЫКЛЮЧЕНО
-astra-noautonet-control status
-НЕАКТИВНО
+astra-noautonet-control disable
 ```
+- astra-noautonet-control <enable/disable/status/is-enabled>
+- astra-noautonet-control is-enabled  ВКЛЮЧЕНО 
+- astra-noautonet-control disable
+- astra-noautonet-control is-enabled ВЫКЛЮЧЕНО
+- astra-noautonet-control status НЕАКТИВНО
+
 Если всё правильно сделали, то ответ на введённые команды по статусу, например ``sudo systemctl status NetworkManager`` будет таким:
 
 ![image](https://github.com/user-attachments/assets/691a469d-e5db-4101-91c5-b5a38e2aef26)
