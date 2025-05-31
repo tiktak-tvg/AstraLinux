@@ -365,7 +365,7 @@ sudo cat /etc/resolv.conf
 ```bash
 systemctl status sssd
 ```
-Входим в домен
+Входим в домен 
 
 ![51](https://github.com/user-attachments/assets/1a04154c-2e42-4ece-8241-09851541684f)
 ![52](https://github.com/user-attachments/assets/5eebdbbe-5339-4b38-a058-829882b16448)
@@ -429,7 +429,7 @@ Password for root@ALD.COMPANY.LAN:
 
 klist
 ```
-##### Проверьте портал управления и настройки брайзера.
+##### Проверьте портал управления и настройки браузера.
 
 Установите правильный адрес домашней страницы для браузера FireFox следующей командой:
 ```bash
@@ -481,7 +481,7 @@ ipa dnsconfig-show
 ```
 ![image](https://github.com/user-attachments/assets/e6ddbcc5-6ca1-4701-8707-6be13929c2aa)
 
-Далее, если всё норм подключаем ещё один контроллер домена.
+#### Далее, если всё норм подключаем ещё один контроллер домена.
 
 Проверяем, что мы его видим
 
@@ -491,7 +491,7 @@ ipa dnsconfig-show
 
 ![image](https://github.com/user-attachments/assets/e61bd337-e67f-4cbf-b9f4-7b29f3f36de0)
 
-Если всё ок, вводим в домен
+Если всё ок, вводим в домен клиентский компьютер.
 ```bash
 /opt/rbta/aldpro/client/bin/aldpro-client-installer --domain it.company.lan --account admin --password 'ваш пароль' --host dc03 --gui --force
 ```
