@@ -275,6 +275,10 @@ deb https://dl.astralinux.ru/astra/frozen/1.7_x86-64/1.7.5/uu/2/repository-updat
 ```
 ![image](https://github.com/user-attachments/assets/39175691-3745-4c96-bad4-943093fdd053)
 
+>[!Warning]
+>Версии репозиторий меняйте под версию ОС которую устанавливаете.
+>Например, ``cat /etc/astra/build_version`` 1.7.4.7 значит в строке репозитория должна стоять эта версия  deb https://dl.astralinux.ru/astra/frozen/1.7_x86-64/**1.7.4**/repository-base/ 1.7_x86-64 main contrib non-free
+
 Определения репозиториев также могут быть указаны файлах, расположенных в каталоге /etc/apt/sources.list.d/. Файлы могут иметь произвольное имя c обязательным расширением ".list".
 Для ALD PRO в папкe source.list.d добавим файл с записью
 ```bash
