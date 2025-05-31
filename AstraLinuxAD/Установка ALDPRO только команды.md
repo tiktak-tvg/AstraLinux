@@ -1,4 +1,4 @@
-#### Установка контролеров домена ALD PRO на Astra Linux 1.7.6.
+#### Установка контролеров домена ALD PRO версии (2.4.1-2.5.0) на Astra Linux 1.7.x.
 ##### Предварительная подготовка сервера.
 Проверяем на рекомендуемое соответствие.
 ```bash
@@ -205,7 +205,9 @@ deb https://dl.astralinux.ru/astra/frozen/1.7_x86-64/1.7.6/uu/2/repository-updat
 ```bash
 cat > /etc/apt/sources.list.d/aldpro.list
 deb https://dl.astralinux.ru/aldpro/frozen/01/2.4.1 1.7_x86-64 main base
+#deb https://dl.astralinux.ru/aldpro/frozen/01/2.5.0 1.7_x86-64 main base
 ```
+
 Обновляем
 ```bash
  apt update
