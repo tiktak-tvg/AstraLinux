@@ -70,7 +70,7 @@ sudo systemctl disable
 ```
 ##### Посмотреть разрешена ли сейчас автозагрзука для службы
 ```bash
-sudo systemctl is-enabled chrony 
+sudo systemctl is-enabled cups 
 ```
 ##### Проверка доступности USB принтера
 ```bash
