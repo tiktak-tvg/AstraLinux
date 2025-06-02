@@ -142,6 +142,7 @@ unzip CDinstall_2.0.2024.14752_Astra_1.7.4_offline.zip
 После распаковки заходим в папку
 ```bash
 cd /mnt/CDDiskPack/CDinstall_Astra_1.7.4/sslcert
+проваливаемся то этому пути
 /mnt/CDDiskPack/CDinstall_Astra_1.7.4/sslcert#
 ```
 ##### Генерируем самоподписанные сертификаты.
@@ -149,6 +150,7 @@ cd /mnt/CDDiskPack/CDinstall_Astra_1.7.4/sslcert
 
 - Шаг 1: Создайте закрытый ключ сервера
 ```bash
+в этой папке /mnt/CDDiskPack/CDinstall_Astra_1.7.4/sslcert#
 openssl genrsa -out it.company.lan.key 2048
 ```
 ![image](https://github.com/user-attachments/assets/e85db849-8f10-4fd0-a6ca-439c41394a2d)
@@ -159,10 +161,10 @@ openssl req -new -key it.company.lan.key -out it.company.lan.csr
 
 Country Name (2 letter code) [AU]:RU
 State or Province Name (full name) [Some-State]:Moscow
-Locality Name (eg, city) []:Moscow
-Organization Name (eg, company) [Internet Widgits Pty Ltd]:Rosreestr
+Locality Name (eg, city) [Город]:Moscow
+Organization Name (eg, company) [Название вашей организации]:Rosreestr
 Organizational Unit Name (eg, section) []:IT
-Common Name (e.g. server FQDN or YOUR name) []:admin.it.company.lan
+Common Name (e.g. server FQDN or YOUR name) [полное имя домена]:it.company.lan
 Email Address []:info@admin.it.company.lan
 ```
 
@@ -204,9 +206,13 @@ openssl req -in it.company.lan.csr -noout -text
 
 Далее переходим к скрипту запуска
 ```bash
-mnt/CDDiskPack/CDinstall_Astra_1.7.4/sslcert/#
+из папки в которой создали сертификаты /mnt/CDDiskPack/CDinstall_Astra_1.7.4/sslcert/#
+переходим 
 cd ..
+проваливаемся
 /mnt/CDDiskPack/CDinstall_Astra_1.7.4/#
+смотрим что в папке скрипт присутствует  ls -l
+даём права на выполнение его
 chmod +x offline_installer.sh
 запускаем
 ./offline_installer.sh
