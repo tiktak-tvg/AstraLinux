@@ -165,7 +165,7 @@ Locality Name (eg, city) [Город]:Moscow
 Organization Name (eg, company) [Название вашей организации]:Rosreestr
 Organizational Unit Name (eg, section) []:IT
 Common Name (e.g. server FQDN or YOUR name) [полное имя домена]:*.it.company.lan
-Email Address []:info@admin.it.company.lan
+Email Address []:info@it.company.lan
 ```
 
 CSR обычно содержит следующую информацию:
