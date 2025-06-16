@@ -26,7 +26,8 @@ cat /etc/astra/build_version
 sudo astra-modeswitch getname
 sudo astra-modeswitch list
 ```
-![image](https://github.com/user-attachments/assets/8e2a245b-c851-48d5-a810-c15978a2dcf2)
+![image](https://github.com/user-attachments/assets/1b721318-470a-40d9-b27f-027ac09a7d19)
+
 
 Если при установке выбрали режим другой, то переходим на требуемый (выбирайте при установке сразу нужный, чтобы было меньше лишних манипуляций)
 ```bash
@@ -80,7 +81,8 @@ allow 192.168.25.0/24
 ip a | grep 'inet '
 route
 ```
-![image](https://github.com/user-attachments/assets/bb002450-e8a9-4fc5-8025-3973534e0813)
+![image](https://github.com/user-attachments/assets/977ef3c4-81a2-4ff9-b5da-625ebc090a28)
+
 
 или так
 ```bash
@@ -118,7 +120,8 @@ address 192.168.25.115
 netmask 255.255.255.0
 gateway 192.168.25.10
 ```
-![image](https://github.com/user-attachments/assets/4389923f-e7d5-4443-a7a5-ab44d957bdc7)
+![image](https://github.com/user-attachments/assets/ba5eac07-9a21-4ff4-96c5-d396faf19795)
+
 
 - auto eth0  --поднимать интерфейс автоматически при старте системы
 - allow-hotplug eth0 --автоматически выполнять перезапуск интерфейса при его падении
@@ -180,11 +183,13 @@ astra-noautonet-control disable
 
 Если всё правильно сделали, то ответ на введённые команды по статусу, например ``sudo systemctl status NetworkManager`` будет таким:
 
-![image](https://github.com/user-attachments/assets/691a469d-e5db-4101-91c5-b5a38e2aef26)
+![image](https://github.com/user-attachments/assets/366a31ef-6910-44c5-a4b4-0956f192f03a)
+
 
 и сеть в трее графического интерфейса будет не активна.
 
-![image](https://github.com/user-attachments/assets/d7ecd977-c8da-4deb-bee6-3f5a0e3046ec)
+![image](https://github.com/user-attachments/assets/d050b803-c5c7-4819-9f13-bbe39c3b680d)
+
 
 Если пропал файл ``/etc/resolv.conf`` просто создайте его заново и внесите такие данные
 ```bash
@@ -224,8 +229,8 @@ ping 77.88.8.8 -c 4
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 ```
+![image](https://github.com/user-attachments/assets/8f1c33fa-f9a2-4c15-85ac-8854b819117e)
 
-![image](https://github.com/user-attachments/assets/74308d59-9e2d-45f6-94a4-9e4bb0b1dd6b)
 
 Настраиваем ``FQDN`` имя первого контроллера домена:
 ```bash
@@ -240,12 +245,13 @@ systemctl restart networking.service
 hostname -s
 hostname -f // если не работает проверяем запись в файле etc/hosts
 ```
-![image](https://github.com/user-attachments/assets/acf5aa2f-4a59-4ab8-9189-a919562c34d5)
+![image](https://github.com/user-attachments/assets/97531ef9-fce5-455d-a184-b9e744ec1706)
 
 
 Ещё раз проверяем все настройки, вводим команду ``ifquery`` результат должен быть такой
 
-![image](https://github.com/user-attachments/assets/bb582400-4d85-4e35-80b5-c318fbd18ddd)
+![image](https://github.com/user-attachments/assets/87ffbe61-9c0e-4d19-8752-7feb3b2553d9)
+
 
 Проверяем пинг ``ping -c 4 dl.astralinux.ru``
 Проверяем
@@ -273,7 +279,8 @@ deb https://dl.astralinux.ru/astra/frozen/1.7_x86-64/1.7.3/repository-extended/ 
 deb https://dl.astralinux.ru/astra/frozen/1.7_x86-64/1.7.3/repository-update/ 1.7_x86-64 main contrib non-free
 deb https://dl.astralinux.ru/astra/frozen/1.7_x86-64/1.7.3/uu/2/repository-update/ 1.7_x86-64 main contrib non-free
 ```
-![image](https://github.com/user-attachments/assets/39175691-3745-4c96-bad4-943093fdd053)
+![image](https://github.com/user-attachments/assets/4805e888-d9b3-44a9-9ca7-17949c2f0b43)
+
 
 >[!Warning]
 >Версии репозиторий меняйте под версию ОС которую устанавливаете.
@@ -289,7 +296,8 @@ deb https://dl.astralinux.ru/aldpro/frozen/01/2.4.1 1.7_x86-64 main base
 Для использования сетевых репозиториев, работающих по протоколу HTTPS необходимо, чтобы в системе был установлен пакет ``apt-transport-https`` и пакет ``ca-certificates``.<br> 
 Проверить наличие пакетов можно командой: ``apt policy apt-transport-https ca-certificates``
 
-![image](https://github.com/user-attachments/assets/c23e2076-dcc7-4ba0-a749-c4619add9c02)
+![image](https://github.com/user-attachments/assets/36c6fa53-8dc6-4a43-8cce-e1489592b424)
+
 
 >[!Warning]
 >Установить пакеты, если вдруг утеряны ``apt-transport-https`` и ``ca-certificates`` можно командой: ``sudo apt install apt-transport-https ca-certificates``
@@ -305,7 +313,9 @@ apt dist-upgrade -y -o Dpkg::Optoins::=--force-confnew
 apt install astra-update
 astra-update -A -r -T 
 ```
-![image](https://github.com/user-attachments/assets/6b6178cd-08fc-49d7-a737-56012eac8528)
+![image](https://github.com/user-attachments/assets/9ecf84cd-d59f-45ab-b6ab-1102aaf89971)
+
+
 
 Перезагружаем сервер ``reboot``
 
@@ -338,7 +348,8 @@ sudo grep error: /var/log/apt/term.log
 sudo aldproctl status
 sudo ipactl status
 ```
-![14](https://github.com/user-attachments/assets/00cc5caa-639d-4927-a205-cf1cd7ea3183)
+![image](https://github.com/user-attachments/assets/ee023fbd-7a25-474e-b0d9-2e60bd14b825)
+
 
 6. Включаем обратно историю ведения команд:
 ```bash
@@ -355,7 +366,8 @@ Failed:    0
 ```bash
 sudo cat /etc/resolv.conf
 ```
-![13](https://github.com/user-attachments/assets/bf4573f7-2c62-4db3-a66c-6fd0ba009e9b)
+![image](https://github.com/user-attachments/assets/21ab2d00-303a-4d67-9efa-c0d827c3b415)
+
 
 В файле должен быть указан ваш домен и адрес сервера – 127.0.0.1, т.к. этот файл настраивается на службу bind9.
 
@@ -367,9 +379,12 @@ systemctl status sssd
 ```
 Входим в домен 
 
-![51](https://github.com/user-attachments/assets/1a04154c-2e42-4ece-8241-09851541684f)
-![52](https://github.com/user-attachments/assets/5eebdbbe-5339-4b38-a058-829882b16448)
-![53](https://github.com/user-attachments/assets/54026fd5-b72d-4311-bc52-f80e4f6ce050)
+![image](https://github.com/user-attachments/assets/507db5fd-ef0d-45be-88f8-d86dcd2873d0)
+
+![image](https://github.com/user-attachments/assets/ff855c8f-e326-41d0-9505-0e1f1035ae01)
+
+![image](https://github.com/user-attachments/assets/48991c99-2db3-4703-99a5-f268aa8824dd)
+
 
 ##### Отключение DNSSEC
 ```bash
@@ -384,29 +399,36 @@ allow-query-cache { any; };
 
 Роли и службы сайта → Служба разрешения имён → Глобальная конфигурация DNS
 Указать IP-адрес внешнего резолвера
-![image](https://github.com/user-attachments/assets/d6f86c4b-62fe-4df8-a5e7-c2c62aef3beb)
+
+![image](https://github.com/user-attachments/assets/b8d65df2-44a8-4ae1-825a-5b8a07d16dce)
+
 
 Например: 77.88.8.8 или 8.8.8.8 или 1.1.1.1
 
-![image](https://github.com/user-attachments/assets/0f05b948-9552-45ca-ad05-31553afdff1e)
+![image](https://github.com/user-attachments/assets/9a70af4d-4528-4020-916d-9e1d75942e32)
+
 
 Если всё правильно сделали, то при проверке настроек должно быть так
 ```bash
 klist
 ```
 
-![image](https://github.com/user-attachments/assets/18290db8-8697-492f-9a48-0a41361318f4)
+![image](https://github.com/user-attachments/assets/7bab4ab8-2786-4ce9-812c-a69ff8f7daef)
+
 
 Если вдруг там нет билета HTTP добляем его вручную и заодно проверим права пользователя admin 
 ```bash
 ipa user-show admin
 ```
 
-![image](https://github.com/user-attachments/assets/2e1e5461-e93b-4660-89ae-f0204d32a3d0)
+![image](https://github.com/user-attachments/assets/a222c10f-89e5-4dba-922c-1e63ae8fddd2)
 
-![image](https://github.com/user-attachments/assets/6e0a5657-b62e-451e-846b-5d6468aed357)
 
-![image](https://github.com/user-attachments/assets/6323c873-2a95-405e-9cfa-1d6ac3ae94c4)
+![image](https://github.com/user-attachments/assets/af20f53f-aae0-4b9c-806e-16f410079b6b)
+
+
+![image](https://github.com/user-attachments/assets/63362a71-9f8f-4ecb-8507-7e46da4ab685)
+
 
 >[!Warning]
 >Если не входит по Kerberos попробуйте настроить браузер как описано ниже или удаляем выданные билеты и заводим заново.
@@ -460,7 +482,8 @@ cat /usr/lib/firefox/distribution/policies.json
 ```bash
 klist
 ```
-![image](https://github.com/user-attachments/assets/18290db8-8697-492f-9a48-0a41361318f4)
+![image](https://github.com/user-attachments/assets/89635e55-1cdf-44d3-9fe9-5c22dbcd50f0)
+
 
 Пробуем зайти по Kerberos.
 
@@ -474,22 +497,26 @@ root@dc01:~#
 
 systemctl status bind9-pkcs11.service
 ```
-![image](https://github.com/user-attachments/assets/de9490ec-dda9-4044-b1e5-da45befda99b)
+![image](https://github.com/user-attachments/assets/429393a4-a90a-4912-9782-140e0359c5e8)
+
 
 ```bash
 ipa dnsconfig-show
 ```
-![image](https://github.com/user-attachments/assets/e6ddbcc5-6ca1-4701-8707-6be13929c2aa)
+![image](https://github.com/user-attachments/assets/640ec9f5-e5ae-4a47-979c-3483e610a112)
+
 
 #### Далее, если всё норм подключаем с такой же предварительной подготовкой, ещё один контроллер домена.
 
 Проверяем, что мы его видим
 
-![64](https://github.com/user-attachments/assets/b1b3f1a2-5f3d-4b2c-8f9e-b279e06c4aff)
+![image](https://github.com/user-attachments/assets/71fd79db-eae7-4b31-84ee-fb1e656cdca6)
+
 
 На другом контроллере домена наш первый контроллер домена должен пинговаться, проверяем (по короткому и длинному имени)
 
-![image](https://github.com/user-attachments/assets/e61bd337-e67f-4cbf-b9f4-7b29f3f36de0)
+![image](https://github.com/user-attachments/assets/3cc33820-3dd3-4423-a770-ec8e80102d84)
+
 
 Если всё ок, вводим в домен клиентский компьютер.
 ```bash
