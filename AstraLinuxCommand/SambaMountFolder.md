@@ -6,7 +6,7 @@
 
 В Fedora/CentOS/RHEL: `sudo dnf install cifs-utils`
 
-##### Подключаем сетевой диск по имени пользователя домена:
+##### Подключаем сетевой диск по имени пользователя домена через fstab:
 ```bash
 sudo mkdir /mnt/utils
 sudo nano /etc/fstab
