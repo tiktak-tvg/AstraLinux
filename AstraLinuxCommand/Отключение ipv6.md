@@ -73,8 +73,8 @@ udp6       0      0 :::5353                 :::*                                
 nano /etc/default/avahi-daemon
 use-ipv6=no
 publish-a-on-ipv6=no
-```
+
 service avahi-daemon stop
 service avahi-daemon start
-
+```
 
