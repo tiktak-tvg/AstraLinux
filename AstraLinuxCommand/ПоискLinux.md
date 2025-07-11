@@ -264,3 +264,12 @@ $ find . -empty -exec rm {} \;
 $ find . -name "*.jpg" -exec cp {} /backups/fotos \;
 ```
 Таким образом можно скопировать все .jpg изображения в каталог backups/fotos
+
+Найти файлы с определенной маской прав, например, 0664:
+```bash
+ find . -type f -perm 0664
+```
+Права также можно задавать буквами для u (user) g (group) и o (other). Например, для того чтобы найти все файлы с установленным флагом Suid в каталоге /usr выполните:
+```bash
+sudo find /usr -type f -perm /u=s
+```
