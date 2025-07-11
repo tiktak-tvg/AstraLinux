@@ -50,5 +50,9 @@ find . -maxdepth 1 -type f -name ".*"
 ```
 В этой команде `-type d` означает директорию, `-type f` — обычный файл.
 
+Альтернатива fing есть небольшая альтернатива.
+
+<img width="937" height="310" alt="image" src="https://github.com/user-attachments/assets/ee97912f-b7a9-4607-ba0e-593e650602db" />
+
 
 
