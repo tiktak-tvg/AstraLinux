@@ -15,7 +15,11 @@ sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
 ```bash
 sudo awk '/^#?PermitRootLogin/ {$1="PermitRootLogin"; $2="yes"} 1' /etc/ssh/sshd_config | sudo tee /etc/ssh/sshd_config.tmp && sudo mv /etc/ssh/sshd_config.tmp /etc/ssh/sshd_config
 ```
-##### Способ 5: Полный контроль через несколько команд
+##### Способ 5: Если нужно раскомментировать только и установить yes (игнорируя другие значения):
+```bash
+sudo sed -i '0,/^#*PermitRootLogin/ s/^#*PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+```
+##### Способ 6: Полный контроль через несколько команд
 ###### Создать резервную копию
 ```bash
 sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.backup
@@ -27,6 +31,7 @@ sudo sed -i '/PermitRootLogin/ s/no/yes/' /etc/ssh/sshd_config
 sudo sed -i '/PermitRootLogin/ s/prohibit-password/yes/' /etc/ssh/sshd_config
 sudo sed -i '/PermitRootLogin/ s/without-password/yes/' /etc/ssh/sshd_config
 ```
+****
 ##### Проверить изменения:
 ```bash
 grep -i "PermitRootLogin" /etc/ssh/sshd_config
@@ -52,7 +57,4 @@ sudo /etc/init.d/ssh restart
 ```bash
 sudo sshd -T | grep permitrootlogin
 ```
-##### Способ 6: Если нужно раскомментировать только и установить yes (игнорируя другие значения):
-```bash
-sudo sed -i '0,/^#*PermitRootLogin/ s/^#*PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
-```
+
