@@ -27,3 +27,32 @@ sudo sed -i '/PermitRootLogin/ s/no/yes/' /etc/ssh/sshd_config
 sudo sed -i '/PermitRootLogin/ s/prohibit-password/yes/' /etc/ssh/sshd_config
 sudo sed -i '/PermitRootLogin/ s/without-password/yes/' /etc/ssh/sshd_config
 ```
+##### Проверить изменения:
+```bash
+grep -i "PermitRootLogin" /etc/ssh/sshd_config
+```
+##### Перезапустить SSH службу для применения изменений:
+######  Для системы с systemd (большинство современных дистрибутивов)
+```bash
+sudo systemctl restart sshd
+```
+######  или
+```bash
+sudo systemctl restart ssh
+```
+######  Для старых систем
+```bash
+sudo service ssh restart
+```
+######  или
+```bash
+sudo /etc/init.d/ssh restart
+```
+##### Проверить, что изменения применились:
+```bash
+sudo sshd -T | grep permitrootlogin
+```
+##### Способ 6: Если нужно раскомментировать только и установить yes (игнорируя другие значения):
+```bash
+sudo sed -i '0,/^#*PermitRootLogin/ s/^#*PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+```
