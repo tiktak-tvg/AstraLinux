@@ -17,11 +17,8 @@
 
 ![image](https://github.com/user-attachments/assets/a9342a3c-bdbd-44fb-8f90-19b6b16f4065)
 ```bash
-apt install open-vm-tools
-```
-```bash
 apt update
-apt install astra-update
+apt install open-vm-tools
 apt install dnsutils
 ```
 Всё, больше никаких манипуляций с обновлениями.
@@ -393,5 +390,6 @@ accept-ranges: bytes
 error 20 at 0 depth lookup: unable to get local issuer certificate
 error it.company.lan.crt: verification failed
 ```
+
 
 
