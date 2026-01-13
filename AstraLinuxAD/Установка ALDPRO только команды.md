@@ -203,9 +203,10 @@ deb https://dl.astralinux.ru/astra/frozen/1.7_x86-64/1.7.6/uu/2/repository-updat
 Определения репозиториев также могут быть указаны файлах, расположенных в каталоге /etc/apt/sources.list.d/. Файлы могут иметь произвольное имя c обязательным расширением ".list".
 Для ALD PRO в папкe source.list.d добавим файл с записью
 ```bash
-cat > /etc/apt/sources.list.d/aldpro.list
+cat > /etc/apt/sources.list.d/aldpro.list >> EOF
 deb https://dl.astralinux.ru/aldpro/frozen/01/2.4.1 1.7_x86-64 main base
 #deb https://dl.astralinux.ru/aldpro/frozen/01/2.5.0 1.7_x86-64 main base
+EOF
 ```
 
 Обновляем
