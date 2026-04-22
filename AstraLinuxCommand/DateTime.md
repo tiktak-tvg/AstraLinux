@@ -1,0 +1,38 @@
+### Как найти локальный сервер времени 
+Определите установленный сервис.
+
+Затем выполните проверку конкретных служб:
+
+- Chrony (современный стандарт): systemctl status chronyd
+- NTP (классический): systemctl status ntp
+- systemd (встроенный): systemctl status systemd-timesyncd
+
+Для Chrony (рекомендуется):
+
+Откройте конфигурацию: ``sudo nano /etc/chrony/chrony.conf``
+
+Добавьте строку, разрешающую доступ (например, для всей локальной сети 192.168.1.0/24):
+
+```text
+allow 192.168.1.0/24
+```
+Перезапустите службу: ``sudo systemctl restart chronyd``
+
+Для NTP (ntpd):
+
+Откройте конфигурацию: sudo nano /etc/ntp.conf
+
+Добавьте или измените строки restrict:
+
+```text
+# Разрешить доступ клиентам из локальной сети
+restrict 192.168.1.0 mask 255.255.255.0 nomodify notrap
+```
+Перезапустите службу: ``sudo systemctl restart ntp``
+
+##### Проверка работоспособности
+Убедитесь, что сервер отвечает на запросы:
+
+- Если используете Chrony: chronyc sources -v
+- Если используете NTP: ntpq -p
+
