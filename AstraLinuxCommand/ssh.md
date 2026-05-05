@@ -67,6 +67,9 @@ ssh root@10.1.100.19 "update-ca-certificates -v"
 ```bash
 ssh root@10.1.100.19 update-ca-certificates -v
 ```
+```bash
+ssh root@10.1.100.19 "mkdir -p /mnt/plugins"
+```
 несколько команд
 ```bash
 ssh root@10.1.100.19 "update-ca-certificates -v && update-ca-certificates --fresh"
