@@ -144,7 +144,7 @@ Vmstat показывает не только физическую память 
 Утилита smartctl входит в состав пакета smartmontools. Это стандартный инструмент для Linux, который есть и в репозиториях Astra Linux. Установить его можно одной командой.
 ```bash
 sudo apt update && sudo apt install smartmontools -y
-```bash
+```
 Информация будет предоставлена так же подробно:
 ```bash
 smartctl 
