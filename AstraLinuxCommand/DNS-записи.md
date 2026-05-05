@@ -38,4 +38,4 @@
 
 Общий запрос: ``host example.com`` (покажет A, AAAA, MX и т.д.).
 
-- **Запрос конкретного типа:** ``host -t MX example.com``
+    - **Запрос конкретного типа:** ``host -t MX example.com``
