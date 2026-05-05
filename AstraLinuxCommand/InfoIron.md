@@ -44,8 +44,17 @@ Vmstat показывает не только физическую память 
 
 <img width="1238" height="335" alt="image" src="https://github.com/user-attachments/assets/b77e4c3f-15f5-41da-ab4b-3142ebef401c" />
 
+Должна быть в вашем арсенале и не менее удобная утилита nmon. Установите ее на сервер:
+```bash
+# apt install nmon
+или
+# yum install nmon -y
+```
+Выполните команду ``nmon``, и для проверки ОЗУ нажмите ``m``:
 
+<img width="1211" height="359" alt="image" src="https://github.com/user-attachments/assets/cdaffbe9-d3ba-430e-957f-b7492a456448" />
 
+<img width="1234" height="187" alt="image" src="https://github.com/user-attachments/assets/166ba918-b2ff-4bd9-a6fc-82d769fa8f73" />
 
 
 
