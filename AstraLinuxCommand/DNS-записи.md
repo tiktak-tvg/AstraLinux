@@ -9,7 +9,7 @@
     - **CNAME-запись** (псевдоним): ``nslookup -type=CNAME example.com``<br>
     - **PTR-запись** (обратный DNS-поиск по IP): ``nslookup 8.8.8.8``<br>
 
-#### Linux/macOS: Команды dig и host
+#### Linux/macOS: ***Команды*** **``dig и host``**
 Эти системы предоставляют более мощные инструменты.
 
 ***Команда*** **``dig``**
