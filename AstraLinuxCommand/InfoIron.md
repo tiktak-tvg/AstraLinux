@@ -109,7 +109,7 @@ Vmstat показывает не только физическую память 
 ```
 <img width="1213" height="918" alt="image" src="https://github.com/user-attachments/assets/aa313af6-9ae8-4845-a6f4-a93d93ff4e3f" />
 
-последняя утилита для проверки процессора inxi. Это скрипт на bash, который покажет вам модель процессора, размер кеша, частоту и дополнительные возможности процессора. Установим его:
+Ещё одна утилита для проверки процессора inxi. Это скрипт на bash, который покажет вам модель процессора, размер кеша, частоту и дополнительные возможности процессора. Установим его:
 ```bash
 # apt install inxi -y
 или
@@ -121,5 +121,74 @@ Vmstat показывает не только физическую память 
 ```
 <img width="1232" height="165" alt="image" src="https://github.com/user-attachments/assets/8c54fc01-fee8-478e-b99b-ddcf9a924e7d" />
 
+#### Информация о жестких дисках сервера в Linux
+Чтобы получить информацию о жестких дисках в системе, я обычно использую утилиту hdparm. Сначала нужно установить ее из репозитория:
+```bash
+# apt install hdparm -y
+# yum install hdparm -y
+```
+Чтобы получить инфу по жесткому диску, нужно указать название устройства:
+```bash
+# hdparm -I /dev/sdb
+```
+<img width="1173" height="379" alt="image" src="https://github.com/user-attachments/assets/ab78a6a7-6394-4fb6-b29e-9b145423b071" />
+
+**hdparm** - просмот информации о типах жестких дисков
+
+Как видите, при проверке отображается модель диска, серийный номер, версия прошивки диска, цилиндрах, rpm, поддерживаемые функции и ряд другой информации.
+
+Вторая не менее популярная утилита это ``smartctl`` (она по умолчанию уже установлена в системе centos). Чтобы вывести информацию о диске, выполните:
+```bash
+# smartctl -d ata -a -i /dev/sdb
+```
+Информация будет предоставлена так же подробно:
+```bash
+smartctl 
+```
+Очередная, очень удобная утилита lshw. Установите ее:
+```bash
+# apt install lshw -y
+# yum install lshw -y
+```
+Выполните команду:
+```bash
+# lshw -class disk
+```
+<img width="1215" height="652" alt="image" src="https://github.com/user-attachments/assets/cc141e42-8cd5-4566-a98a-b64912a01733" />
+
+Утилита ``dmidecode:`` получения информации о материнской плате, BIOS и др.
+
+В данном разделе я приведу примеры более расширенного использования утилиты ``dmidecode``. ``Dmidecode`` позволяет получить информацию об аппаратном обеспечении сервера на основе данных из ``BIOS`` по стандарту ``SMBIOS/DMI``.
+
+С помощью ``dmidecode`` мы можем получить информацию о материнской плате, bios, шасси и слотах сервера. 
+
+> Например:<br>
+**dmidecode --type baseboard** – получим информацию о материнской плате.
+```bash
+dmidecode --type baseboard 
+```
+**dmidecode --type bios** – информация о BIOS (версия, поддерживаемые функции).
+```bash
+dmidecode --type bios
+```
+**dmidecode --type chassis** – сведения о корпусе (шасси) сервера.
+```bash
+dmidecode --type chassis 
+```
+**dmidecode --type slot** – сведения о используемых слотах на материнской плате.
+```bash
+dmidecode --type slot 
+```
+<img width="1218" height="763" alt="image" src="https://github.com/user-attachments/assets/5fe8c6c1-fd91-4d37-93ba-6cdba626ed7e" />
+
+Чтобы собрать вообще всю информацию о железе вашего сервера Linux, можно воспользоваться ранее указанную утилиту lshw:
+```bash
+# lshw -html > server_info.html
+```
+Вся информация будет выгружена в html файл.
+```bash
+lshw -html 
+```
+<img width="1637" height="993" alt="image" src="https://github.com/user-attachments/assets/847294bc-92de-4d07-a6c2-65b7b8fdd5d4" />
 
 
