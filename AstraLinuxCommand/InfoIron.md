@@ -56,9 +56,11 @@ Vmstat показывает не только физическую память 
 
 <img width="1234" height="187" alt="image" src="https://github.com/user-attachments/assets/166ba918-b2ff-4bd9-a6fc-82d769fa8f73" />
 
-
-
-
+Но все вышеперечисленные утилиты, показывают лишь объем памяти, а модель скорость и другие характеристики нет. Если нужна более подробная информация о бланках памяти (производитель, тип, частота), можно воспользоваться утилитой dmidecode:
+```bash
+# dmidecode -t 17
+```
+<img width="1190" height="463" alt="image" src="https://github.com/user-attachments/assets/70b9ea14-551f-4526-a24f-53eca3277a9c" />
 
 
 
