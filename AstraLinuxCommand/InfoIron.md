@@ -193,6 +193,10 @@ dmidecode --type slot
 ```bash
 lshw -html 
 ```
+Открыть в Astra Linux командой
+```bash
+xdg-open server_info.html
+```
 <img width="1637" height="993" alt="image" src="https://github.com/user-attachments/assets/847294bc-92de-4d07-a6c2-65b7b8fdd5d4" />
 
 
