@@ -109,3 +109,17 @@ Vmstat показывает не только физическую память 
 ```
 <img width="1213" height="918" alt="image" src="https://github.com/user-attachments/assets/aa313af6-9ae8-4845-a6f4-a93d93ff4e3f" />
 
+последняя утилита для проверки процессора inxi. Это скрипт на bash, который покажет вам модель процессора, размер кеша, частоту и дополнительные возможности процессора. Установим его:
+```bash
+# apt install inxi -y
+или
+# yum install inxi -y
+```
+Запустите скрипт:
+```bash
+# inxi -C
+```
+<img width="1232" height="165" alt="image" src="https://github.com/user-attachments/assets/8c54fc01-fee8-478e-b99b-ddcf9a924e7d" />
+
+
+
