@@ -23,13 +23,13 @@
 > - Этот метод не рекомендуется, так как многие DNS-серверы его игнорируют или блокируют. dig example.com ANY +noall +answer может дать более чистый вывод.
 
 Запрос конкретных типов записей:<br>
-    - **А-запись:**  ``dig example.com A``<br>
-    - **MX-запись:**  ``dig example.com MX``<br>
-    - **NS-запись:**  ``dig example.com NS``<br>
-    - **TXT-запись:**  ``dig example.com TXT``<br>
-    - **SOA-запись:**  ``dig example.com SOA``<br>
-    - **CNAME-запись:**  ``dig example.com CNAME``<br>
-    - **PTR-запись:**  ``dig -x 8.8.8.8``<br>
+        - **А-запись:**  ``dig example.com A``<br>
+        - **MX-запись:**  ``dig example.com MX``<br>
+        - **NS-запись:**  ``dig example.com NS``<br>
+        - **TXT-запись:**  ``dig example.com TXT``<br>
+        - **SOA-запись:**  ``dig example.com SOA``<br>
+        - **CNAME-запись:**  ``dig example.com CNAME``<br>
+        - **PTR-запись:**  ``dig -x 8.8.8.8``<br>
 Чтобы получить только значение записи (без технических деталей): добавьте ``+short``. Например: ``dig example.com A +short``.
 
 Команда **host**
