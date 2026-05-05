@@ -66,13 +66,46 @@ Vmstat показывает не только физическую память 
 Как видите, dmidecode выводит более подробную информацию о установленных модулях памяти.
 
 #### Как узнать информацию о процессоре (CPU) в Linux?
+
 Информацию о процессоре в Linux можно получить несколькими способами. Начнем с самого простого — получение информации из файла /proc/cpuinfo:
 ```bash
 # cat /proc/cpuinfo | grep model
 ```
 <img width="1256" height="159" alt="image" src="https://github.com/user-attachments/assets/688af255-5697-4793-ab6f-f4b729df43f2" />
 
+Чтобы узнать количество ядер, выполните:
+```bash
+# cat /proc/cpuinfo | grep processor
+```
+<img width="1225" height="517" alt="image" src="https://github.com/user-attachments/assets/2febbccb-3edf-4e80-8d18-74a79eb37fa5" />
 
+Более подробную информацию о процессоре, можно узнать командой lscpu:
+```bash
+# lscpu
+```
+<img width="1237" height="423" alt="image" src="https://github.com/user-attachments/assets/da26dadf-d2df-4312-95ee-4043a10e6efc" />
 
+Утилита ``lscpu`` покажет вам количество ядер, модель процессора, максимальную частоту, рамеры кэшей CPU, ноды NUMA и многое другое.
 
+Количество ядер, так же можно узнать запустив команду ``atop или nproc --all``:
+
+Для отображения подробной информации, можно дополнительно установить утилиту cpuid:
+```bash
+# apt install cpuid
+или
+# yum install cpuid -y
+```
+После установки запустите командой:
+```bash
+# cpuid
+```
+<img width="1207" height="949" alt="image" src="https://github.com/user-attachments/assets/662fd503-e653-4773-a344-a599aeb435e0" />
+
+Вы получите информацию не только о модели процессора, но тип и семейство процессора, конфигурацию кеша, функцию управления питанием и другое.
+
+С помощью утилиты demidecodev вы так же можете узнать всю информацию об установленных на сервере процессорах:
+```bash
+# dmidecode --type processor
+```
+<img width="1213" height="918" alt="image" src="https://github.com/user-attachments/assets/aa313af6-9ae8-4845-a6f4-a93d93ff4e3f" />
 
