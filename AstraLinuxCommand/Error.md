@@ -105,6 +105,14 @@ sudo du -sh /var/* 2>/dev/null | sort -hr
 ```
 <img width="1238" height="240" alt="image" src="https://github.com/user-attachments/assets/e6be8881-7c0f-43cd-a094-0a3c5ed7b280" />
 
+Если нужно найти конкретные большие файлы (размером более 100 МБ или 1000 МБ)
+```bash
+sudo find / -type f -size +100M -exec ls -lh {} \; 2>/dev/null
+```
+<img width="1237" height="272" alt="image" src="https://github.com/user-attachments/assets/3212299b-741c-497e-a8dd-e0ad0d9083f0" />
 
+Или вывести сразу сортированный список 10 самых больших файлов:
 
-
+```bash
+sudo find / -type f -exec du -h {} + 2>/dev/null | sort -rh | head -20
+```
