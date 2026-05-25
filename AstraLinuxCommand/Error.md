@@ -118,6 +118,7 @@ sudo find / -type f -size +100M -exec ls -lh {} \; 2>/dev/null
 ```bash
 sudo find / -type f -exec du -h {} + 2>/dev/null | sort -rh | head -20
 ```
+<img width="1237" height="318" alt="image" src="https://github.com/user-attachments/assets/46fca7b4-d4b6-4141-8493-4704f5823c33" />
 
 >[!Warning]
 >Не сканируйте **/proc, /sys, /dev, /run** – они виртуальные и не занимают реального места на диске, но du или find могут зависнуть или выдать ошибки
@@ -128,6 +129,8 @@ sudo find / -type f -exec du -h {} + 2>/dev/null | sort -rh | head -20
 ```bash
 sudo du -x --max-depth=1 / | sort -hr
 ```
+<img width="1238" height="345" alt="image" src="https://github.com/user-attachments/assets/96d80175-0712-4ab8-be1e-c45c5cb2f88f" />
+
 Для полного анализа часто бывает достаточно проверить:
 
 **/var/log** – старые и большие логи
