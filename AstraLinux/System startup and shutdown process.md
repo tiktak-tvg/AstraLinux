@@ -217,10 +217,12 @@ systemctl list-units --type=service
 #### 7. Управление целевыми состояниями через systemd
 Цели (targets) заменяют runlevels:
 
-Target	Аналог runlevel	Назначение
-multi-user.target	3	Многопользовательский текстовый режим
-graphical.target	5	Графический режим
-rescue.target	1	Режим восстановления
+Target              | Аналог runlevel               | Назначение
+------------------- | ----------------------------- | -------------
+multi-user.target	  | 3	 | Многопользовательский текстовый режим
+graphical.target	  | 5	 | Графический режим
+rescue.target       | 1	 | Режим восстановления
+
 Команды:
 
 ```bash
