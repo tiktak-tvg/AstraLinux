@@ -407,3 +407,5 @@ sudo systemctl restart <service>
 ```bash
 systemctl show <service> -p PDPLabel
 ```
+> **Примечание для Astra Linux:**
+Если включён Secure Boot, загрузка неподписанных модулей (например, собственных) будет заблокирована. Потребуется подписать модуль или отключить Secure Boot.
