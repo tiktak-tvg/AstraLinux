@@ -61,6 +61,149 @@
 
 Управление: **modprobe, lsmod, rmmod, insmod**.
 
+##### 5.1. lsmod — список загруженных модулей
+Показывает, какие модули сейчас загружены в ядро.
+
+```bash
+$ lsmod | head -5
+Module                  Size  Used by
+nls_utf8               16384  1
+isofs                  49152  1
+vfat                   24576  1
+fat                    86016  1 vfat
+```
+Пояснение колонок:
+
+**Module** — имя модуля;
+
+**Size** — размер в памяти;
+
+**Used by** — счётчик использований и имена зависимых модулей.
+
+Поиск конкретного модуля:
+
+```bash
+$ lsmod | grep dummy
+dummy                  16384  0
+```
+Если вывод пуст — модуль не загружен.
+
+##### 5.2. modprobe — загрузка/выгрузка модуля с учётом зависимостей
+Загрузка модуля
+```bash
+$ sudo modprobe dummy
+$ lsmod | grep dummy
+dummy                  16384  0
+```
+``modprobe`` автоматически подтянет зависимости, если они есть.
+
+Загрузка с параметрами
+```bash
+$ sudo modprobe dummy numdummies=2
+$ cat /sys/module/dummy/parameters/numdummies
+2
+```
+Выгрузка модуля
+```bash
+$ sudo modprobe -r dummy
+$ lsmod | grep dummy
+(пусто)
+```
+Ключ -r (reverse) выгружает модуль и его неиспользуемые зависимости.
+
+Проверка без реальной загрузки (dry-run)
+```bash
+$ sudo modprobe -n -v dummy
+insmod /lib/modules/$(uname -r)/kernel/drivers/net/dummy.ko
+```
+##### 5.3. insmod — загрузка одного модуля по полному пути
+``insmod`` не разрешает зависимости и принимает только путь к .ko-файлу.
+
+```bash
+$ sudo insmod /lib/modules/$(uname -r)/kernel/drivers/net/dummy.ko
+$ lsmod | grep dummy
+dummy                  16384  0
+```
+Если у модуля есть зависимости, insmod завершится ошибкой:
+
+```bash
+$ sudo insmod /path/to/module.ko
+insmod: ERROR: could not insert module module.ko: Unknown symbol in module
+```
+Для собственного модуля:
+
+```bash
+$ sudo insmod ./hello.ko
+$ lsmod | grep hello
+hello                  16384  0
+```
+Выгрузка:
+
+```bash
+$ sudo rmmod hello
+```
+##### 5.4. rmmod — выгрузка одного модуля
+Удаляет конкретный модуль. Не удаляет зависимости автоматически.
+
+```bash
+$ sudo rmmod dummy
+$ lsmod | grep dummy
+(пусто)
+```
+Если модуль используется, будет ошибка:
+
+```bash
+$ sudo rmmod vfat
+rmmod: ERROR: Module vfat is in use
+```
+Проверить, кто использует модуль, можно по колонке Used by в lsmod или через lsof.
+
+##### 5.5. Дополнительно: modinfo
+Просмотр информации о модуле:
+
+```bash
+$ modinfo dummy
+filename:       /lib/modules/5.10.0-.../kernel/drivers/net/dummy.ko
+license:        GPL
+description:    Dummy net driver
+author:         ...
+depends:
+```
+##### 5.6. Автозагрузка модуля и параметры
+Автозагрузка при старте системы
+Создайте файл:
+
+```bash
+$ sudo nano /etc/modules-load.d/dummy.conf
+```
+Содержимое:
+
+```text
+dummy
+```
+Параметры модуля по умолчанию
+Создайте файл:
+
+```bash
+$ sudo nano /etc/modprobe.d/dummy.conf
+```
+Содержимое:
+
+```text
+options dummy numdummies=2
+```
+После этого при загрузке модуль dummy будет загружаться с двумя интерфейсами.
+
+Сводная таблица
+Команда	Назначение	Требует root
+lsmod	Показать загруженные модули	Нет
+modprobe <name>	Загрузить модуль с зависимостями	Да
+modprobe -r <name>	Выгрузить модуль с зависимостями	Да
+insmod <path>	Загрузить один модуль по пути	Да
+rmmod <name>	Выгрузить один модуль	Да
+modinfo <name>	Информация о модуле	Нет
+
+
 #### 6. Управление службами через systemd
 Основные команды:
 
