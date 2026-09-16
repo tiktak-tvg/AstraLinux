@@ -100,4 +100,88 @@ systemctl start mnt-myshare.mount
   -	Для отладки используйте опцию -v (verbose)
   -	При проблемах с правами используйте uid и gid в опциях монтирования
 
-Выберите метод в зависимости от типа сетевого ресурса и ваших потребностей!
+### Подключение к файловым серверам CIFS из UNIX
+#### smbclient 
+```bash
+# apt install smbclient
+```
+#### mount.cifs
+```bash
+# apt install cifs-utils nfs-common
+```
+#### linux проводник thunar
+```bash
+# apt install gvfs-backends gvfs-fuse krb5-user
+```
+#### NTLM аутентификация
+Debian/Ubuntu
+
+##### Использование smbclient
+```bash
+root@client1:~# su - user1
+
+$ smbclient --list //gate
+
+$ smbclient -U user1 //gate/corp_share
+```
+##### Использование mount.cifs из под root
+```bash
+# mount.cifs //gate/corp_share /mnt -o user=user2
+Password for user1@//gate/corp_share:  wpassword2
+```
+##### Использование mount.cifs с правами user1
+```bash
+root@client1:~# cat /etc/fstab
+```
+```bash
+...
+//gate.corpX.un/corp_share /home/user1/corp_share cifs rw,user,user=user1,noauto 0 0
+root@client1:~# su - user1
+
+user1@client1:~$ mkdir corp_share/
+
+user1@client1:~$ mount /home/user1/corp_share
+
+user1@client1:~$ ls corp_share/
+
+user1@client1:~$ umount /home/user1/corp_share
+```
+#### GSSAPI аутентификация
+Debian/Ubuntu
+
+##### Использование smbclient
+```bash
+user1@client1:~$ kinit user1
+
+user1@client1:~$ smbclient -k //gate.corpX.un/homes
+
+user1@client1:~$ smbclient -k //gate.corpX.un/corp_share
+```
+##### Использование mount.cifs
+```bash
+root@client1:~# kinit user1
+
+root@client1:~# mount.cifs //gate.corpX.un/corp_share -o rw,user,sec=krb5,vers=3.1.1 /mnt
+
+root@client1:~# cat /etc/fstab
+```
+```bash
+...
+//gate.corpX.un/corp_share /home/user1/Public cifs rw,user,sec=krb5,noauto,vers=3.1.1 0 0
+//gate.corpX.un/corp_share /home/user2/Public cifs rw,user,sec=krb5,noauto,vers=3.1.1 0 0
+...
+# Можно короче, можно по русски (но монтироваться "щелчком по ярлыку" не будет):
+//gate/homes /home/user1/Документы cifs rw,user,sec=krb5,noauto 0 0
+//gate/corp_share /home/user1/Общедоступные cifs rw,user,sec=krb5,noauto 0 0
+...
+```
+##### В GUI не нужно, каталог Public уже есть
+```bash
+root@client1:~# su - user1
+
+user1@client1:~$ mkdir Public/
+
+user1@client1:~$ mount Public/
+
+user1@client1:~$ umount Public/
+```
