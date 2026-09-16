@@ -151,7 +151,7 @@ read -n 1 -p "Нажмите любую клавишу: " KEY
 ' 2> '              | Перенаправить stderr в файл.
 ' &> '	            | Перенаправить stdout и stderr.
 ' 2>&1              | Объединить stderr с stdout.
-< | >               | Конвейер: stdout одной команды → stdin другой.
+<img width="21" height="24" alt="image" src="https://github.com/user-attachments/assets/52290685-3e89-4c83-ba2f-db4bb8b24c39" />             | Конвейер: stdout одной команды → stdin другой.
 
 ```bash
 # Примеры
