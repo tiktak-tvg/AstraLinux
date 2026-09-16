@@ -1,6 +1,5 @@
-Процесс загрузки и выключения системы  (System boot and shutdown process)
-
-Управление устройствами и модулями ядра  (Management of devices and kernel modules)
+1. Процесс загрузки и выключения системы  (System boot and shutdown process)
+2. Управление устройствами и модулями ядра  (Management of devices and kernel modules)
 
 Управление программным обеспечением  (Software management)
 
