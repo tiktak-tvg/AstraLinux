@@ -1,6 +1,6 @@
 Процесс загрузки и выключения системы  (System boot and shutdown process);
-Управление устройствами и модулями ядра  (Management of devices and kernel modules)
-Управление программным обеспечением  (Software management)
+Управление устройствами и модулями ядра  (Management of devices and kernel modules);
+Управление программным обеспечением  (Software management);
 Управление файловыми системами  (File system management)
 Расширенное администрирование устройств хранения данных  (Advanced storage device administration)
 Система журналирования в Astra Linux SE  (Logging system in Astra Linux SE)
