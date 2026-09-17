@@ -15,13 +15,13 @@ stderr	         | 2	             | Стандартный вывод ошибо�
 Оператор	     | Действие	                            | Пример
 ---------------- | ------------------------------------ | --------------
 '>'                | stdout в файл (перезапись).	        | ls > list.txt
->>	             | stdout в файл (дозапись).	        | echo "new" >> list.txt
-<	             | stdin из файла.		                | wc -l < /etc/passwd
-2>	             | stderr в файл.		                | find / -name x 2> errors.txt
-2>>	             | stderr в файл (дозапись).		    | cmd 2>> errors.txt
-&>	             | stdout и stderr в файл.		        | cmd &> all.log
-2>&1	         | Объединить stderr с stdout.		    | cmd > all.log 2>&1
-&>>	             | stdout и stderr в файл (дозапись).   | cmd &>> all.log
+'>>'	             | stdout в файл (дозапись).	        | echo "new" >> list.txt
+'<'	             | stdin из файла.		                | wc -l < /etc/passwd
+'2>'	             | stderr в файл.		                | find / -name x 2> errors.txt
+'2>>'	             | stderr в файл (дозапись).		    | cmd 2>> errors.txt
+'&>'	             | stdout и stderr в файл.		        | cmd &> all.log
+'2>&1'	         | Объединить stderr с stdout.		    | cmd > all.log 2>&1
+'&>>'	             | stdout и stderr в файл (дозапись).   | cmd &>> all.log
 
 Примеры:
 ```bash
