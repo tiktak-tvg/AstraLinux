@@ -186,7 +186,7 @@ web1 ansible_host=192.168.32.110 ansible_port=2222 http_port=80
 web2 ansible_host=192.168.32.111 ansible_port=22 http_port=8080
 
 [dbservers]
-
+db1 ansible_host=192.168.32.120 ansible_user=postgres
 ```
 ##### 4.2. Плейбуки (Playbooks)
 Плейбуки — это YAML-файлы, описывающие последовательность задач для выполнения на управляемых узлах.
