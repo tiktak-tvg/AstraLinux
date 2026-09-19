@@ -171,9 +171,10 @@ ss -6 -tup
 ```bash
 # Проверка адресов IPv6
 ip a | grep inet6
-```
+
 # Проверка состояния IPv6 в sysctl
-```bash
+
 sysctl --all | grep net.ipv6.conf.all.disable_ipv6
-```
+
 Значение 1 указывает на то, что IPv6 отключён
+```
