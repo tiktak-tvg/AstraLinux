@@ -239,11 +239,11 @@ sudo ss -tulnp | grep :53
 
 Исходные данные:
 
-Параметр	| Master	        | Slave
-IP-адрес	192.168.32.211	192.168.32.212
-Имя хоста	dns.localnet.example.ru	dns2.localnet.example.ru
+Параметр	  | Master	          | Slave
+----------- | ----------------- | ----------------
+IP-адрес	  | 192.168.32.211	  | 192.168.32.212
+Имя хоста	  | dns.localnet.example.ru	  | dns2.localnet.example.ru
 
-Роль	master	slave
 ##### Этап 1. Подготовка обоих серверов
 ```bash
 sudo apt update
