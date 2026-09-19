@@ -98,7 +98,7 @@ apache2ctl	 | Управление сервером (start, stop, restart, confi
 ----------------------- | -------------- | ----------------
 Listen	 | Порт прослушивания	 | Listen 80
 ServerName	 | Основное доменное имя сервера	 | ServerName server.domain.name
-ServerAlias	 | Дополнительные имена (алиасы)	 | ServerAlias www.server.domain.name
+ServerAlias	 | Дополнительные имена (алиасы)	 | ServerAlias ``www.server.domain.name``
 ServerAdmin	 | Email администратора	 | ServerAdmin webmaster@localhost
 DocumentRoot	 | Корневой каталог сайта	 | DocumentRoot /var/www/html
 
