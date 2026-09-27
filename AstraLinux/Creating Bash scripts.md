@@ -84,18 +84,23 @@ $!	                | PID последнего фонового процесса.
 
 ##### Работа со строками и числами
 ```bash
+#!/bin/bash
 NAME="Astra"
 SURNAME="Linux"
 FULL="$NAME $SURNAME"           # Конкатенация
 LENGTH=${#FULL}                 # Длина строки: 11
+echo "Конкатенация: ${FULL}, Длина строки: ${LENGTH}"
 
 # Арифметика (несколько способов)
 A=5
 B=3
-SUM=$((A + B))                  # Арифметическое выражение
-let "MUL = A * B"               # Через let
+SUM=$((A + B))                  # Арифметическое выражение (рекомендуемый способ)
+let "MUL=A*B"                   # Через let (без лишних пробелов)
 DIV=$(expr $A / $B)             # Через expr (устаревший способ)
+echo "Арифметическое выражение: ${SUM}, Через let: ${MUL}, Через expr: ${DIV}"
 ```
+<img width="1282" height="278" alt="image" src="https://github.com/user-attachments/assets/7d19f37e-23ce-44f9-bbd8-b9ed9eead8d6" />
+
 ##### Подстановка команд
 ```bash
 # Значение переменной = вывод команды
@@ -104,6 +109,9 @@ KERNEL=$(uname -r)
 USERS=$(who | wc -l)
 echo "Сегодня $DATE, ядро $KERNEL, пользователей: $USERS"
 ```
+
+<img width="1281" height="181" alt="image" src="https://github.com/user-attachments/assets/e3c1f8fa-4a62-431e-9e81-1421e4e12e6d" />
+
 ##### Область видимости
 ```bash
 # Локальная переменная (только внутри функции)
@@ -115,6 +123,8 @@ my_func() {
 # Глобальная переменная (доступна везде)
 GLOBAL_VAR="global value"
 ```
+<img width="1283" height="337" alt="image" src="https://github.com/user-attachments/assets/6bac410d-c087-499a-9005-3ccefe092f85" />
+
 ##### Экспорт переменных
 ```bash
 # Переменная окружения — доступна дочерним процессам
@@ -132,6 +142,8 @@ echo -e "С табуляцией:\tтекст"
 printf "%-10s %5d\n" "Всего:" 42
 printf "Файл: %s, размер: %d байт\n" "test.txt" 1024
 ```
+<img width="1284" height="246" alt="image" src="https://github.com/user-attachments/assets/75c685a7-5bad-4c0c-a3ed-b1cae58111c6" />
+
 ##### Ввод: read
 ```bash
 # Простой ввод
