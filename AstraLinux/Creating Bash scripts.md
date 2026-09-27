@@ -11,6 +11,9 @@
 
 echo "Привет, Astra Linux!"
 ```
+
+<img width="1280" height="90" alt="image" src="https://github.com/user-attachments/assets/6faaf301-9a1c-4865-94c3-d4dc5d90d9ae" />
+
 Обязательные элементы:
 
 **Shebang (#!/bin/bash)** — указывает ядру, какой интерпретатор использовать. Без неё сценарий может быть выполнен текущей оболочкой, что не всегда предсказуемо.
@@ -29,6 +32,8 @@ bash script.sh
 # Способ 3: выполнить в текущей оболочке (без создания подпроцесса)
 source script.sh
 ```
+<img width="1281" height="212" alt="image" src="https://github.com/user-attachments/assets/ff9db385-3155-4070-9496-7e0e1d4266bd" />
+
 ##### Соглашения об именовании
 
 - Расширение ``.sh`` — не обязательно, но полезно для читаемости.
@@ -52,6 +57,8 @@ echo "Дистрибутив: $NAME, версия: $VERSION"
 echo "Дистрибутив: ${NAME}, версия: ${VERSION}"   # Рекомендуемая форма
 ```
 > Важно: Между именем переменной, знаком = и значением не должно быть пробелов. NAME = "value" — ошибка.
+
+<img width="1284" height="319" alt="image" src="https://github.com/user-attachments/assets/4e565d50-62ac-41ac-9136-978eac32e3f8" />
 
 ##### Типы переменных
 
