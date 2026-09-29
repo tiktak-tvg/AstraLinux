@@ -242,6 +242,15 @@ if [ ! -f "/etc/passwd" ]; then echo "Файл отсутствует"; fi
 # В [[ ]] можно использовать && и || напрямую
 if [[ "$A" -gt 0 && "$B" -lt 10 ]]; then echo "OK"; fi
 ```
+
+<img width="1280" height="294" alt="image" src="https://github.com/user-attachments/assets/3df56440-2718-45e0-a44d-8b24cd4bf9f3" />
+
+• Как проверить, существует ли файл или папка (флаги -f и -d)
+• Как сравнивать числа (вместо = используются -eq, -lt, -gt)
+• Как объединять условия с помощью И (&&) и ИЛИ (||)
+
+<img width="1280" height="832" alt="image" src="https://github.com/user-attachments/assets/71638c80-97fa-473e-9dea-0f01d0f4fa0f" />
+
 ##### case
 ```bash
 case "$1" in
@@ -260,6 +269,9 @@ case "$1" in
         ;;
 esac
 ```
+
+<img width="1281" height="428" alt="image" src="https://github.com/user-attachments/assets/7ff5c528-92af-4119-9d76-c9c03bad5126" />
+
 ##### Циклы
 for по списку
 
@@ -273,6 +285,9 @@ for ((i=1; i<=5; i++)); do
     echo "Итерация $i"
 done
 ```
+
+<img width="1281" height="1114" alt="image" src="https://github.com/user-attachments/assets/c11d6230-edc7-4fcc-8c08-3f740fd6634b" />
+
 ##### while
 
 ```bash
@@ -288,6 +303,9 @@ while true; do
     [ "$CMD" = "quit" ] && break
 done
 ```
+
+<img width="1284" height="658" alt="image" src="https://github.com/user-attachments/assets/ae50c6eb-ec68-4010-a73b-fc6652e3447c" />
+
 ##### until — цикл, пока условие ложно:
 
 ```bash
@@ -297,6 +315,9 @@ until [ $COUNT -gt 5 ]; do
     ((COUNT++))
 done
 ```
+
+<img width="1278" height="269" alt="image" src="https://github.com/user-attachments/assets/e1725571-52df-4eb0-9323-c1b339965ea2" />
+
 ##### Управление циклом:
 
 ```bash
@@ -306,6 +327,9 @@ for i in {1..10}; do
     echo $i
 done
 ```
+
+<img width="1278" height="318" alt="image" src="https://github.com/user-attachments/assets/9a429eed-b2ea-4632-a241-987e3e20b670" />
+
 #### Функции
 Функции позволяют инкапсулировать повторяющийся код. Они объявляются двумя способами:
 
@@ -320,6 +344,9 @@ my_func() {
     echo "Функция вызвана"
 }
 ```
+
+<img width="1280" height="315" alt="image" src="https://github.com/user-attachments/assets/55f32a07-045d-41c8-8aa0-fcea64d1387e" />
+
 ##### Параметры функции
 Внутри функции $1, $2 и т.д. — это её аргументы, а не аргументы сценария.
 ```bash
@@ -334,6 +361,9 @@ greet "Мария" "Привет"
 Возврат значений
 return N — возвращает код завершения (0–255).
 ```
+
+<img width="1277" height="844" alt="image" src="https://github.com/user-attachments/assets/5d65dc9e-8cd5-41b4-bc87-07a0a53e4c9f" />
+
 ##### echo — для возврата произвольного значения через stdout.
 
 ```bash
@@ -358,6 +388,9 @@ get_date() {
 TODAY=$(get_date)
 echo "Сегодня: $TODAY"
 ```
+
+<img width="1277" height="797" alt="image" src="https://github.com/user-attachments/assets/83ae349e-2689-4c94-a21c-bfc7c4b1ca75" />
+
 ##### Рекурсия
 ```bash
 factorial() {
@@ -371,6 +404,9 @@ factorial() {
 
 echo "5! = $(factorial 5)"    # 120
 ```
+
+<img width="1278" height="357" alt="image" src="https://github.com/user-attachments/assets/5e19ec71-1809-4d6d-a6f8-3a27c7b32087" />
+
 > Обработка ошибок и завершение
 
 ##### Коды возврата
@@ -382,6 +418,9 @@ echo "Код возврата: $?"
 ls /nonexistent
 echo "Код возврата: $?"    # Будет ненулевым
 ```
+
+<img width="1278" height="512" alt="image" src="https://github.com/user-attachments/assets/1bec3ae9-54e2-4f5a-9c87-62a961dc957f" />
+
 ##### Проверка успешности команды
 ```bash
 # Способ 1: через $?
@@ -393,6 +432,9 @@ fi
 # Способ 2: через && и ||
 mkdir /tmp/test && echo "Каталог создан" || echo "Ошибка создания"
 ```
+
+<img width="1279" height="691" alt="image" src="https://github.com/user-attachments/assets/669a07c6-dd76-4a9c-ab2e-a4e93d1e4e6a" />
+
 ##### Команда set и её опции
 ```bash
 #!/bin/bash
@@ -420,6 +462,9 @@ trap 'echo "Прервано пользователем"; exit 130' INT TERM
 touch /tmp/mytemp.$$
 echo "Работа завершена"
 ```
+
+<img width="1278" height="484" alt="image" src="https://github.com/user-attachments/assets/8a866120-7e1e-4646-9a5e-95025bdf0863" />
+
 ##### Завершение сценария: exit
 ```bash
 # Нормальное завершение
@@ -437,6 +482,9 @@ exit 1
 # 127 — команда не найдена
 # 130 — прервано Ctrl+C (128 + SIGINT=2)
 ```
+
+<img width="1276" height="482" alt="image" src="https://github.com/user-attachments/assets/c943a3b1-10f1-4677-ba07-787eda1d061c" />
+
 ##### Вывод сообщений об ошибках
 ```bash
 # stderr вместо stdout
@@ -463,6 +511,9 @@ echo "Здравствуйте, $NAME!"
 echo "Вам $AGE лет."
 echo "Сегодня $(date '+%d.%m.%Y %H:%M')"
 ```
+
+<img width="1276" height="378" alt="image" src="https://github.com/user-attachments/assets/50a91f2b-d74e-4a58-9523-326837a3ce86" />
+
 ##### Сценарий 2: Проверка существования файла
 ```bash
 #!/bin/bash
@@ -490,6 +541,15 @@ elif [ -f "$FILE" ]; then
     echo "Права: $(stat -c%A "$FILE")"
 fi
 ```
+
+<img width="1275" height="528" alt="image" src="https://github.com/user-attachments/assets/6126a12d-37b0-4073-a398-55bc1953a622" />
+
+```bash
+root@mx2:/mnt/public# bash script26.sh /nonexistent
+Файл '/nonexistent' не существует
+root@mx2:/mnt/public# echo $?
+1
+```
 ##### Сценарий 3: Счётчик с циклом
 ```bash
 #!/bin/bash
@@ -511,31 +571,43 @@ while [ "$NUM" -gt 0 ]; do
 done
 echo "Поехали!"
 ```
+
+<img width="1278" height="473" alt="image" src="https://github.com/user-attachments/assets/1f4563bf-bc81-4d0a-9fa1-8fcdb43d9f18" />
+
 ##### Сценарий 4: Меню с case
 ```bash
 #!/bin/bash
 # menu.sh — интерактивное меню
 
-set -euo pipefail
+set -uo pipefail
 
 while true; do
-    echo "=== Меню ==="
-    echo "1. Показать дату"
-    echo "2. Показать пользователей"
+    echo "=== Интерактивное Меню ==="
+    echo "1. Показать дату и время"
+    echo "2. Показать активных пользователей"
     echo "3. Показать дисковое пространство"
     echo "0. Выход"
-    read -p "Выбор: " CHOICE
+    echo "=========================="
+    read -p "Выберите пункт [0-3]: " CHOICE
+    echo
 
     case "$CHOICE" in
         1) date ;;
         2) who ;;
-        3) df -h ;;
+        3) df -h / ;;
         0) echo "До свидания!"; exit 0 ;;
-        *) echo "Неверный выбор" >&2 ;;
+        *) echo "Ошибка: Неверный выбор!" >&2 ;;
     esac
+    
     echo
+    # Используем встроенную REPLY, чтобы избежать проблем с пустым вводом при set -u
+    read -p "Нажмите [Enter] для продолжения..." REPLY
+    echo "----------------------------------"
 done
 ```
+
+<img width="1277" height="1071" alt="image" src="https://github.com/user-attachments/assets/718e079a-f973-420e-b06f-322300043e49" />
+
 #### Практическая работа: сложные сценарии
 
 ##### Сценарий 1: Резервное копирование каталога
