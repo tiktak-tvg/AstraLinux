@@ -192,12 +192,18 @@ while IFS= read -r line; do
 done < /etc/hosts
 Важно: IFS= и -r предотвращают обрезку пробелов и интерпретацию обратных слэшей.
 ```
+
+<img width="1282" height="743" alt="image" src="https://github.com/user-attachments/assets/aa533abb-97e3-4b21-a312-06d1f913c3cc" />
+
 #### Алгоритмические конструкции
 ##### Условные операторы
-```
-if / elif / else
 
-bash
+**if / elif / else**
+
+```bash
+#!/bin/bash
+# Проверка условий: if / elif / else
+
 if [ "$USER" = "root" ]; then
     echo "Вы администратор"
 elif [ "$USER" = "guest" ]; then
@@ -205,7 +211,11 @@ elif [ "$USER" = "guest" ]; then
 else
     echo "Вы обычный пользователь: $USER"
 fi
+EOF
 ```
+
+<img width="1281" height="247" alt="image" src="https://github.com/user-attachments/assets/6065c98a-ec28-45a3-aa9f-024e1f289c61" />
+
 ##### Операторы сравнения:
 
 Оператор	| Числа	| Строки	| Файлы
