@@ -103,6 +103,8 @@ sudo tar --xattrs --acls -cvzf /backup/archive.tar.gz /Документы
 
 <img width="1157" height="155" alt="image" src="https://github.com/user-attachments/assets/c6a1d1f5-a849-4cb7-b0fb-03e8b8e8f41d" />
 
+<img width="1164" height="443" alt="image" src="https://github.com/user-attachments/assets/c7a94c97-a346-4a12-97c6-9a58fd76a360" />
+
 ##### Восстановление с сохранением меток:
 
 ```bash
@@ -132,6 +134,8 @@ echo 0 | sudo tee /parsecfs/unsecure_setxattr
 /parsecfs/unsecure_setxattr — файл, управляющий разрешением на использование этой привилегии.
 ```
 > Важно: Все действия по архивации и восстановлению в Astra Linux SE должны выполняться в сессии суперпользователя с высоким уровнем целостности.
+
+<img width="1148" height="244" alt="image" src="https://github.com/user-attachments/assets/1f9679b6-5b1e-4b3d-aef1-e61191fa99d8" />
 
 #### Синхронизация каталогов и файлов с помощью rsync
 **rsync** — это мощный инструмент для синхронизации файлов и каталогов, который поддерживает сохранение мандатных атрибутов при копировании.
