@@ -375,6 +375,8 @@ sudo chattr -a /var/log/myapp.log
 
 <img width="1083" height="381" alt="image" src="https://github.com/user-attachments/assets/0c828dc3-ed44-4ced-be98-6c5eedf40da9" />
 
+<img width="1087" height="293" alt="image" src="https://github.com/user-attachments/assets/008978c7-3ad9-4a34-b075-adca7251741e" />
+
 #### Особенности Astra Linux SE
 - Мандатный контроль (МКЦ): Дискреционные права работают поверх мандатных. Даже если пользователь имеет права rwx на файл, но его уровень целостности ниже уровня файла — доступ будет запрещён.
 - Графическое управление: Вкладка «Дискреционные атрибуты» в свойствах файла (Файловый менеджер fly-fm) позволяет управлять владельцем, правами, SUID/SGID/Sticky и ACL.
