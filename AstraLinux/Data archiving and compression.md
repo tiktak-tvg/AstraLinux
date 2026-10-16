@@ -63,6 +63,8 @@ bs — размер блока (например, 4096 или 4M), влияет 
 Клонировать раздел на другой диск	  | sudo dd if=/dev/sda1 of=/dev/sdb1 bs=4M status=progress
 Восстановить из образа	            | sudo dd if=/media/usb/sda1.img of=/dev/sda1 bs=4M
 
+<img width="1161" height="955" alt="image" src="https://github.com/user-attachments/assets/7f508574-ea11-4157-abb9-df3433f0b4c1" />
+
 ##### Важные недостатки dd:
 
 - Копирует всё пространство раздела, включая пустое, что создаёт избыточный объём.
