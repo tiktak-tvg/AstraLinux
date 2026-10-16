@@ -100,15 +100,22 @@ sudo tar --xattrs --acls -cvzf /backup/archive.tar.gz /Документы
 
 -f — указать имя файла архива.
 ```
+
+<img width="1157" height="155" alt="image" src="https://github.com/user-attachments/assets/c6a1d1f5-a849-4cb7-b0fb-03e8b8e8f41d" />
+
 ##### Восстановление с сохранением меток:
 
 ```bash
 sudo tar --xattrs --acls -xvf /backup/archive.tar.gz -C /
+```
+
+<img width="1157" height="229" alt="image" src="https://github.com/user-attachments/assets/a239b05b-46a9-4481-af37-dd500c0bf9cb" />
+
 При восстановлении опция --xattrs позволяет корректно применить мандатные метки к файлам.
 
 > Ключевое требование: PARSEC-привилегия
 Для восстановления файлов с мандатными метками недостаточно просто использовать --xattrs. Процесс tar должен обладать PARSEC-привилегией PARSEC_CAP_UNSAFE_SETXATTR, которая позволяет изменять мандатные атрибуты файлов.
-```
+
 ##### Включение привилегии перед восстановлением:
 
 ```bash
