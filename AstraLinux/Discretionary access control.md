@@ -278,6 +278,9 @@ find / -type f -perm -o+w 2>/dev/null
 # Поиск файлов без владельца
 find / -nouser 2>/dev/null
 ```
+
+<img width="1089" height="1149" alt="image" src="https://github.com/user-attachments/assets/eb03a58e-48ed-4128-b3ee-c1bd02b8c646" />
+
 ##### Шаг 2. Изменение дискреционных прав доступа
 ```bash
 # Создаём тестовый файл
@@ -287,12 +290,21 @@ touch /tmp/test_perms.txt
 chmod 640 /tmp/test_perms.txt
 ls -l /tmp/test_perms.txt
 
+# Создаём группу developers
+sudo groupadd developers
+
+# Создаём пользователя user1 и сразу добавляем его в группу developers
+sudo useradd -g developers user1
+
 # Изменяем владельца
 sudo chown user1:developers /tmp/test_perms.txt
 
 # Проверяем
 ls -l /tmp/test_perms.txt
 ```
+
+<img width="1081" height="371" alt="image" src="https://github.com/user-attachments/assets/c321feff-5859-4347-923b-27865939b99c" />
+
 ##### Шаг 3. Создание общего каталога через SGID
 ```bash
 # Создаём группу и каталог
@@ -312,8 +324,9 @@ sudo usermod -aG project user2
 # Проверяем: новые файлы в каталоге наследуют группу project
 touch /shared_sgid/test.txt
 ls -l /shared_sgid/test.txt
-# -rw-rw-r-- 1 user1 project ... test.txt
 ```
+``-rw-r--r-- 1 root project 0 окт 16 17:36 /shared_sgid/test.txt``
+
 ##### Шаг 4. Создание общего каталога через ACL
 ```bash
 # Создаём каталог
