@@ -12,6 +12,9 @@ ls -i /etc/passwd
 # Полная информация об inode
 stat /etc/passwd
 ```
+
+<img width="1081" height="189" alt="image" src="https://github.com/user-attachments/assets/4361be40-9606-40e2-aa26-6a0f3601b941" />
+
 ##### Классы пользователей определяются относительно конкретного файла:
 
 Класс   | Обозначение   | Описание
