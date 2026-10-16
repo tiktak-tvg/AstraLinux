@@ -198,36 +198,47 @@ echo 0 | sudo tee /parsecfs/unsecure_setxattr
 ##### Шаг 1. Создание тестовой структуры с метками
 ```bash
 # Создаём каталоги
-sudo mkdir -p /source/Отдел_кадров
-sudo mkdir -p /backup
+mkdir -p /mnt/source/Отдел_кадров
+mkdir -p /mnt/backup
 
-# Устанавливаем мандатные метки
-sudo pdpl-file 2:0:0x20:ccnr /source/Отдел_кадров
-sudo pdpl-file 1:0:0x20:0 /source/Отдел_кадров/Документ1.txt
+# Сначала создаём тестовые файлы
+echo "Секретный документ" | tee /mnt/source/Отдел_кадров/Документ1.txt
+echo "Ещё один документ" | tee /mnt/source/Отдел_кадров/Документ2.txt
 
-# Создаём тестовые файлы
-echo "Секретный документ" | sudo tee /source/Отдел_кадров/Документ1.txt
-echo "Ещё один документ" | sudo tee /source/Отдел_кадров/Документ2.txt
+# Устанавливаем мандатные метки (теперь файлы существуют)
+pdpl-file 2:0:0x20:ccnr /mnt/source/Отдел_кадров
+pdpl-file 1:0:0x20:0 /mnt/source/Отдел_кадров/Документ1.txt
 
 # Проверяем метки
-pdp-ls -Md /source/Отдел_кадров/
+pdp-ls -Md source/Отдел_кадров/
+pdp-ls -M source/Отдел_кадров/
+
+# Проверяем метки
+pdp-ls -Md source/Отдел_кадров/
 ```
+
+<img width="1170" height="504" alt="image" src="https://github.com/user-attachments/assets/2ff85727-dc86-44a3-93d2-22c2cfb5d59d" />
+
 ##### Шаг 2. Использование dd для клонирования
 ```bash
 # Создаём образ раздела (пример для /dev/sdb1)
 # ВНИМАНИЕ: замените /dev/sdb1 на ваш тестовый раздел
-sudo dd if=/dev/sdb1 of=/backup/sdb1.img bs=4096 status=progress
+mkdir /media/hdd_img
+sudo dd if=/dev/sdb1 of=/media/hdd_img bs=4M status=progress
 
 # Проверяем размер образа
-ls -lh /backup/sdb1.img
+ls -lh /media/hdd_img
 
 # Восстанавливаем из образа (на тестовый раздел)
-sudo dd if=/backup/sdb1.img of=/dev/sdb1 bs=4096 status=progress
+sudo dd if=/media/hdd_img of=/dev/sdb1 bs=4M status=progress
 ```
+
+<img width="1170" height="88" alt="image" src="https://github.com/user-attachments/assets/5c94fd61-67cc-432b-9438-5729bb220062" />
+
 ##### Шаг 3. Архивация с tar и сохранением меток
 ```bash
 # Создаём архив с сохранением мандатных меток
-sudo tar --xattrs --acls -cvzf /backup/source_backup.tar.gz /source
+sudo tar --xattrs --acls -cvzf /backup/source_backup.tar.gz source
 
 # Проверяем содержимое архива
 sudo tar -tzvf /backup/source_backup.tar.gz
@@ -238,29 +249,38 @@ sudo /usr/sbin/execaps -c 0x1000 -- sudo tar --xattrs --acls -xvf /backup/source
 echo 0 | sudo tee /parsecfs/unsecure_setxattr
 
 # Проверяем восстановленные метки
-pdp-ls -Md /source/
+pdp-ls -Md source/
 ```
+
+<img width="1192" height="412" alt="image" src="https://github.com/user-attachments/assets/0b4de8a5-792c-46b5-b867-412cbf059972" />
+
 ##### Шаг 4. Синхронизация с rsync и метками
 ```bash
 # Синхронизируем каталог с сохранением меток
 echo 1 | sudo tee /parsecfs/unsecure_setxattr
-sudo /usr/sbin/execaps -c 0x1000 -- sudo rsync -avAX /source/ /backup/source_rsync/
+sudo /usr/sbin/execaps -c 0x1000 -- sudo rsync -avAX source/ /backup/source_rsync/
 echo 0 | sudo tee /parsecfs/unsecure_setxattr
 
 # Проверяем метки в синхронизированном каталоге
 pdp-ls -Md /backup/source_rsync/
 
 # Удалённая синхронизация (пример)
-# sudo rsync -vzrptgoAX /source/ user@remote:/backup/source/
+# sudo rsync -vzrptgoAX source/ user@remote:/backup/source/
 ```
+
+<img width="1189" height="435" alt="image" src="https://github.com/user-attachments/assets/b4e2137a-a9c3-412f-b200-d8a67e2a0316" />
+
 ##### Шаг 5. Проверка результатов
 ```bash
 # Сравниваем содержимое
-diff -r /source /backup/source_rsync
-
+diff -r source /backup/source_rsync
+# Должна завершиться абсолютно пустой строкой (это означает, что бинарное и текстовое содержимое файлов идентично).
 # Проверяем метки на всех файлах
 find /backup/source_rsync -exec pdp-ls -Md {} \;
 ```
+
+<img width="1157" height="115" alt="image" src="https://github.com/user-attachments/assets/aee267a8-9d9c-4caf-8c1a-d08657d0b295" />
+
 #### Особенности Astra Linux SE
 - Привилегия PARSEC_CAP_UNSAFE_SETXATTR: Без неё восстановление мандатных меток невозможно.
 - Привилегия управляется через файл /parsecfs/unsecure_setxattr и утилиту execaps.
