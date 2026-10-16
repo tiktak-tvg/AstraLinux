@@ -26,13 +26,21 @@ gzip -k document.txt
 
 # Создать tar-архив и сжать его gzip
 tar -czvf archive.tar.gz /path/to/dir
+```
+<img width="1164" height="156" alt="image" src="https://github.com/user-attachments/assets/a58b3e8e-9e85-46c5-82c3-a5db30c186e2" />
 
+<img width="1164" height="363" alt="image" src="https://github.com/user-attachments/assets/d644714a-2fdc-4d97-ae50-cdb03299934b" />
+
+```bach
 # Сжать с помощью bzip2 или xz
 tar -cjvf archive.tar.bz2 /path/to/dir
 tar -cJvf archive.tar.xz /path/to/dir
 
 Для распаковки используются соответствующие опции: -xzf (gzip), -xjf (bzip2), -xJf (xz).
 ```
+
+<img width="1166" height="391" alt="image" src="https://github.com/user-attachments/assets/03372d85-426c-46a3-8a23-ac8a499fae1d" />
+
 #### Клонирование дисков с помощью dd
 Утилита dd — это самый простой инструмент для полного копирования дисков или разделов «побитово». Она автоматически устанавливается в системе и не требует настройки.
 
