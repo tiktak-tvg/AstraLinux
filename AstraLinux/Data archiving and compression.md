@@ -154,21 +154,37 @@ echo 0 | sudo tee /parsecfs/unsecure_setxattr
 ```bash
 sudo rsync -avAX /Документы/ /backup/Документы/
 ```
+
+<img width="1163" height="348" alt="image" src="https://github.com/user-attachments/assets/4e2c5d3e-4490-4ec4-964e-8caabb3b70d7" />
+
 ##### Пример удалённой синхронизации через SSH:
 ```bash
 sudo rsync -vzrptgoAX /home/ admin@192.168.0.1:/home_bak
 
 В этом примере сохраняются права, владельцы, временные метки, ACL и расширенные атрибуты.
 ```
+
+<img width="1148" height="650" alt="image" src="https://github.com/user-attachments/assets/5c719e19-9686-4537-b38a-f09b8771b965" />
+
+<img width="1163" height="372" alt="image" src="https://github.com/user-attachments/assets/95afafe0-52d3-4e6f-a82b-51299e37befc" />
+
 > Требование PARSEC-привилегии для rsync
 Как и для tar, для корректного сохранения мандатных атрибутов удалённому экземпляру rsync должна быть предоставлена привилегия PARSEC_CAP_UNSAFE_SETXATTR.
 
 ##### Пример синхронизации с привилегией:
 ```bash
+# 1. Включаем режим для xattrs
 echo 1 | sudo tee /parsecfs/unsecure_setxattr
-sudo /usr/sbin/execaps -c 0x1000 -- sudo rsync -avAX /source/ /destination/
+
+# 2. Выполняем синхронизацию реальных папок
+sudo /usr/sbin/execaps -c 0x1000 -- rsync -avAX /home/cyber-root/Документы/ /mnt/backup/Документы/
+
+# 3. Возвращаем безопасность в исходное состояние
 echo 0 | sudo tee /parsecfs/unsecure_setxattr
 ```
+
+<img width="1146" height="250" alt="image" src="https://github.com/user-attachments/assets/a6ad8b3f-9cd3-4776-b651-3ca7df6d5003" />
+
 ##### Рекомендации по безопасности
 - Не используйте sudo в удалённых вызовах rsync — это небезопасно.
 - Используйте опцию -M --fake-super для безопасного сохранения атрибутов через SSH.
