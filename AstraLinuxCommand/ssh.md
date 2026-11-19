@@ -172,6 +172,8 @@ ssh-copy-id -i /drives/c/Users/Имя пользователя/.ssh/id_rsa.pub u
 
 <img width="1391" height="827" alt="image" src="https://github.com/user-attachments/assets/82ff8340-633e-46a7-a5d2-e8e094281da2" />
 
+---
+
 Полезные советы при ошибках
 
 - Включите постоянную домашнюю директорию. Если после перезапуска MobaXterm ключи пропадают из ~/.ssh/, зайдите в Settings -> Configuration -> General и укажите постоянную папку для Persistent home directory.
