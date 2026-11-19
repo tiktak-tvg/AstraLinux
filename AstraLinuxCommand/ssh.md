@@ -148,6 +148,9 @@ ssh-copy-id -i ~/.ssh/id_ed25519.pub root@10.1.100.14
 
 <img width="1215" height="553" alt="image" src="https://github.com/user-attachments/assets/ac2b7bba-c0a6-409a-8eeb-830bcabab140" />
 
+#### Итог
+
+<img width="1313" height="502" alt="image" src="https://github.com/user-attachments/assets/b5bd471e-e1b6-4f15-8afa-43b3fcbc9dbb" />
 
 #### Способ 2. Если путь к ключу находится в Windows
 В локальном терминале MobaXterm используется файловая система формата Cygwin, поэтому диски Windows монтируются в папку /drives/.
